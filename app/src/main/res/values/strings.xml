@@ -7,6 +7,18 @@
     <string name="usuar">NOM USUARI</string>
     <string name="dni">DNI</string>
     <string name="contrasenya">CONRASENYA</string>
+    <string name="nomApp">PHF</string>
+    <string name="reserves">RESERVES</string>
+    <string name="mascotes">MASCOTES</string>
+    <string name="ubucacio">LLOC DE DESTI</string>
+    <string name="dataInici">DATA INICI</string>
+    <string name="dataFi">DATA FI</string>
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
