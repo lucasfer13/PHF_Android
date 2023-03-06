@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">PHF_Android</string>
     <string name="registrar">RGISTRAR</string>
+    <string name="correu">CORREU</string>
+    <string name="nom">NOM</string>
+    <string name="cognom">COGNOMS</string>
+    <string name="usuar">NOM USUARI</string>
+    <string name="dni">DNI</string>
+    <string name="contrasenya">CONRASENYA</string>
+
+
 </resources>
