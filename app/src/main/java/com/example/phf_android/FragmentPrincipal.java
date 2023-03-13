@@ -53,6 +53,14 @@ public class FragmentPrincipal extends Fragment {
                 startActivityForResult(intent, 0);
             }
         });
+        Button mascotes = view.findViewById(R.id.btnFracmentMascotes);
+        mascotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityMascotes.class);
+                startActivityForResult(intent, 0);
+            }
+        });
 
         return view;
     }

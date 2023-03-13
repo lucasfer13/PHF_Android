@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdapterBusquedaGuarderia extends RecyclerView.Adapter<ListAdapterBusquedaGuarderia.ViewHolder>{
@@ -19,7 +20,7 @@ public class ListAdapterBusquedaGuarderia extends RecyclerView.Adapter<ListAdapt
     private Context context;
 
 
-    public ListAdapterBusquedaGuarderia(List<Guarderia> itemList, Context context) {
+    public ListAdapterBusquedaGuarderia(ArrayList<Guarderia> itemList, Context context) {
         this.mInFlater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
