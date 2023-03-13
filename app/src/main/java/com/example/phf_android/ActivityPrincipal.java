@@ -52,7 +52,7 @@ public class ActivityPrincipal extends AppCompatActivity {
                 if(dateButtonStart.isClickable()){
                     dateButtonStart.setText(date);
                 }
-                else{
+                if (dateButtonFi.isClickable()){
                     dateButtonFi.setText(date);
                 }
             }
