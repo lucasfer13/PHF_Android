@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityBusqueda">
+
+    <Button
+        android:id="@+id/btnBusquedaTornar"
+        android:layout_width="92dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="@string/tornar"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBusquedaOrdenar"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="@string/ordenar"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/btnBusquedaFiltrar"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBusquedaTornar" />
+
+    <Button
+        android:id="@+id/btnBusquedaFiltrar"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="@string/filtrar"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBusquedaBuscador" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lisBusquedaGuarderies"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBusquedaFiltrar" />
+
+    <EditText
+        android:id="@+id/txtBusquedaBuscador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/btnBusquedaTornar"
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+
+
+    />
+
+]]>
+</androidx.constraintlayout.widget.ConstraintLayout>

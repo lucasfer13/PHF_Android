@@ -43,7 +43,17 @@ public class FragmentPrincipal extends Fragment {
                 Intent intent = new Intent(getActivity(),ActivityLogin.class);
                 startActivity(intent);
             }
+
         });
+        Button buscar = view.findViewById(R.id.btnFragmentPrincipalCercar);
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityBusqueda.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         return view;
     }
 }
