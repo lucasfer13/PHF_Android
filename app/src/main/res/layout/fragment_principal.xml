@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPrincipal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnFracmentMascotes"
+            android:layout_width="165dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="240dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="@color/aquamarine"
+            android:text="@string/mascotes"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnFracmentReserva"
+            android:layout_width="165dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="@color/aquamarine"
+            android:text="RESERVES"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnFragmentPrincipalCercar"
+            android:layout_width="69dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="400dp"
+            android:background="@drawable/boto_rodo"
+            android:backgroundTint="@null"
+            app:icon="@drawable/magnifier"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pcbFracmentSuperior"
+            app:layout_constraintVertical_bias="0.91" />
+
+        <ImageView
+            android:id="@+id/pcbFracmentInferior"
+            android:layout_width="415dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="356dp"
+            android:background="@color/aquamarine"
+            android:src="@drawable/aquamarine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pcbFracmentSuperior"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="-2dp" />
+
+        <ImageView
+            android:id="@+id/pcbFracmentSuperior"
+            android:layout_width="415dp"
+            android:layout_height="76dp"
+            android:background="@color/aquamarine"
+            android:src="@drawable/aquamarine"
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="-1dp" />
+
+        <TextView
+            android:id="@+id/txtFragmentPhf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/anton"
+            android:text="PHF"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnFragmentUsuari"
+            android:layout_width="72dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/aquamarine"
+            android:src="?android:attr/fingerprintAuthDrawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
