@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PHF_Android</string>
     <string name="registrar">RGISTRAR</string>
+    <string name="usuari">USUARI</string>
     <string name="correu">CORREU</string>
     <string name="nom">NOM</string>
     <string name="cognom">COGNOMS</string>
@@ -17,6 +18,8 @@
     <string name="filtrar">FILTRAR</string>
     <string name="tornar">TORNAR</string>
     <string name="afegirMascota">AFEGIR MASCOTA</string>
+    <string name="buscar">BUSCAR</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
