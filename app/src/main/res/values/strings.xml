@@ -19,8 +19,11 @@
     <string name="tornar">TORNAR</string>
     <string name="afegirMascota">AFEGIR MASCOTA</string>
     <string name="buscar">BUSCAR</string>
-
-
+    <string name="pes">PES</string>
+    <string name="edat">EDAT</string>
+    <string name="tipus">TIPUS</string>
+    <string name="cartilla">CARTILLA</string>
+    <string name="historial">HE ESTAT</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
