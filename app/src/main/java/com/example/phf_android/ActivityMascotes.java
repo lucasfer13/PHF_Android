@@ -27,14 +27,7 @@ public class ActivityMascotes extends AppCompatActivity {
 
         init();
 
-        /*Button reg = findViewById(R.id.btnMasTornar);
-        reg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), ActivityPrincipal.class);
-                startActivityForResult(intent, 0);
-            }
-        });*/
+
     }
 
     public void init(){
@@ -43,5 +36,17 @@ public class ActivityMascotes extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapterMascota);
+
+        listAdapterMascota.setOnItemClickListener(new ListAdapterMascota.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Mascota mascotaSeleccionada = mascotes.get(position);
+                Intent intent = new Intent(ActivityMascotes.this, ActivityDetallMascota.class);
+                //intent.putExtra("mascotaSeleccionada", mascotaSeleccionada);
+                startActivity(intent);
+            }
+        });
+
     }
+
 }

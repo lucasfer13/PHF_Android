@@ -1,5 +1,6 @@
 package com.example.phf_android;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
     private List<Mascota> mascotasData;
     private LayoutInflater mInFlater;
     private Context context;
+    private OnItemClickListener listener;
 
 
     public ListAdapterMascota(List<Mascota> itemList, Context context) {
@@ -26,6 +28,9 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
         this.mascotasData = itemList;
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public int getItemCount() {return mascotasData.size();}
@@ -38,8 +43,24 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
 
 
     @Override
-    public void onBindViewHolder(final ListAdapterMascota.ViewHolder holder, final int position) {
+    /*public void onBindViewHolder(final ListAdapterMascota.ViewHolder holder, final int position) {
         holder.binData(mascotasData.get(position));
+    }*/
+
+
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Mascota mascota = mascotasData.get(position);
+
+        // Setea la informacion de la mascota en el ViewHolder
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
+            }
+        });
     }
 
     public void setItems(List<Mascota> items){mascotasData=items;}
@@ -65,5 +86,8 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
             pes.setText(item.getPes());
             tipus.setText(item.getTipus());
         }
+    }
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }
