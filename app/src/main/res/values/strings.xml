@@ -24,6 +24,13 @@
     <string name="tipus">TIPUS</string>
     <string name="cartilla">CARTILLA</string>
     <string name="historial">HE ESTAT</string>
+    <string name="afegirMascotaMas">AFEGEIX UNA MASCOTA</string>
+
+    <string-array name="mascota_tipus">
+        <item>Gos</item>
+        <item>Gat</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
