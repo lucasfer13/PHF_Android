@@ -25,6 +25,12 @@
     <string name="cartilla">CARTILLA</string>
     <string name="historial">HE ESTAT</string>
     <string name="afegirMascotaMas">AFEGEIX UNA MASCOTA</string>
+    <string name="perfil">PERFIL</string>
+    <string name="app">APP</string>
+    <string name="pagament">METODES DE PAGAMENT</string>
+    <string name="informacioLegal">INFORMACIO LEGAL</string>
+
+
 
     <string-array name="mascota_tipus">
         <item>Gos</item>

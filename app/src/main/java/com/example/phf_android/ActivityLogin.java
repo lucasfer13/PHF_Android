@@ -20,5 +20,14 @@ public class ActivityLogin extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+
+        Button in = findViewById(R.id.btnLoginEntrar);
+        in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityConfiguracio.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 }

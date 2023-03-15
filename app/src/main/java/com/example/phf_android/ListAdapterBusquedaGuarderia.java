@@ -57,7 +57,6 @@ public class ListAdapterBusquedaGuarderia extends RecyclerView.Adapter<ListAdapt
         }
 
         void binData(final Guarderia item){
-            //Nomes es mostraran les imatges si es demana
             image = itemView.findViewById(R.id.pcbLlistaImatge);
             Glide.with(context).load(item.getFoto()).into(image);
             nom.setText(item.getNom());
