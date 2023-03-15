@@ -25,7 +25,18 @@ public class ActivityMascotes extends AppCompatActivity {
         mascotes.add(new Mascota("/res/drawable/logophf.png","Mixi","GAT","5 anys","6 kg"));
         mascotes.add(new Mascota("/res/drawable/logophf.png","Pupi","GOS","2 anys","11 kg"));
 
+        Button reg = findViewById(R.id.btnMascotesAfegir);
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityAfegirMascota.class);
+                startActivity(intent);
+            }
+
+        });
         init();
+
+
 
 
     }
@@ -46,6 +57,7 @@ public class ActivityMascotes extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
