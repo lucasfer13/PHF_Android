@@ -56,9 +56,10 @@
             android:background="@color/aquamarine"
             android:src="@drawable/aquamarine"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pcbFracmentSuperior"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="-2dp" />
+            app:layout_constraintVertical_bias="0.982" />
 
         <ImageView
             android:id="@+id/pcbFracmentSuperior"
@@ -66,8 +67,12 @@
             android:layout_height="76dp"
             android:background="@color/aquamarine"
             android:src="@drawable/aquamarine"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="-1dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/txtFragmentPhf"

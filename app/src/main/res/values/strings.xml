@@ -13,7 +13,10 @@
     <string name="ubucacio">LLOC DE DESTI</string>
     <string name="dataInici">DATA INICI</string>
     <string name="dataFi">DATA FI</string>
-
+    <string name="ItemDataFi">Data fi:</string>
+    <string name="ItemDataInici">Data inici:</string>
+    <string name="ItemNom">Nom:</string>
+    <string name="ItemPreu">Preu:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
