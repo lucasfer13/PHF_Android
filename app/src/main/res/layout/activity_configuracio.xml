@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityConfiguracio">
+
+    <Button
+        android:id="@+id/btnConfiguracioPerfil"
+        android:layout_width="308dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/boto_rodo"
+        android:text="@string/perfil"
+        android:textColor="#000000"
+        app:backgroundTint="@null"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pcbConfiguracioFoto" />
+
+    <Button
+        android:id="@+id/btnConfiguracioApp"
+        android:layout_width="308dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/boto_rodo"
+        android:text="@string/app"
+        android:textColor="#000000"
+        app:backgroundTint="@null"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfiguracioPerfil" />
+
+    <Button
+        android:id="@+id/btnConfiguracioPagament"
+        android:layout_width="308dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/boto_rodo"
+        android:text="@string/pagament"
+        android:textColor="#000000"
+        app:backgroundTint="@null"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfiguracioApp" />
+
+    <Button
+        android:id="@+id/btnConfiguracioInformacioLegal"
+        android:layout_width="308dp"
+        android:layout_height="43dp"
+        android:background="@drawable/boto_rodo"
+        android:text="@string/informacioLegal"
+        android:textColor="#000000"
+        app:backgroundTint="@null"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfiguracioPagament"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <ImageView
+        android:id="@+id/pcbConfiguracioFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

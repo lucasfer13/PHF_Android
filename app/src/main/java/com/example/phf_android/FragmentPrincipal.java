@@ -44,6 +44,15 @@ public class FragmentPrincipal extends Fragment {
                 Intent intent = new Intent(getActivity(),ActivityLogin.class);
                 startActivity(intent);
             }
+
+        });
+        Button buscar = view.findViewById(R.id.btnFragmentPrincipalCercar);
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityBusqueda.class);
+                startActivityForResult(intent, 0);
+            }
         });
         Button btnFracmentReserva = (Button) view.findViewById(R.id.btnFracmentReserva);
         btnFracmentReserva.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +60,14 @@ public class FragmentPrincipal extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ActivityReserva.class);
                 startActivity(intent);
+            }
+        });
+        Button mascotes = view.findViewById(R.id.btnFracmentMascotes);
+        mascotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityMascotes.class);
+                startActivityForResult(intent, 0);
             }
         });
         return view;
