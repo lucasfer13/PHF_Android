@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class FragmentPrincipal extends Fragment {
-
+    Button btnFracmentReserva;
 
     public FragmentPrincipal() {
         // Required empty public constructor
@@ -28,6 +28,7 @@ public class FragmentPrincipal extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //btnFracmentReserva = btnFracmentReserva.findViewById(R.id.btnFracmentReserva);
     }
 
     @Override
@@ -53,6 +54,14 @@ public class FragmentPrincipal extends Fragment {
                 startActivityForResult(intent, 0);
             }
         });
+        Button btnFracmentReserva = (Button) view.findViewById(R.id.btnFracmentReserva);
+        btnFracmentReserva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ActivityReserva.class);
+                startActivity(intent);
+            }
+        });
         Button mascotes = view.findViewById(R.id.btnFracmentMascotes);
         mascotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +70,6 @@ public class FragmentPrincipal extends Fragment {
                 startActivityForResult(intent, 0);
             }
         });
-
         return view;
     }
 }

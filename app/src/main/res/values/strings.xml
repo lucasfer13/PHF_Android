@@ -14,6 +14,10 @@
     <string name="ubucacio">LLOC DE DESTI</string>
     <string name="dataInici">DATA INICI</string>
     <string name="dataFi">DATA FI</string>
+    <string name="ItemDataFi">Data fi:</string>
+    <string name="ItemDataInici">Data inici:</string>
+    <string name="ItemNom">Nom:</string>
+    <string name="ItemPreu">Preu:</string>
     <string name="ordenar">ORDENAR</string>
     <string name="filtrar">FILTRAR</string>
     <string name="tornar">TORNAR</string>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="117dp">
+
+        <ImageView
+            android:id="@+id/ETIemReservaimageView"
+            android:layout_width="61dp"
+            android:layout_height="103dp" />
+
+        <TextView
+            android:id="@+id/TVItemReservaDataInici"
+            android:layout_width="90dp"
+            android:layout_height="37dp"
+            android:layout_alignEnd="@+id/ETIemReservaValorDataInici"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-8dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginBottom="64dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:text="@string/ItemDataInici"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TVItemReservaDataFi"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ETIemReservaValorDataInici"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="176dp"
+            android:layout_marginEnd="-75dp"
+            android:layout_marginBottom="76dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:text="@string/ItemDataFi"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TVItemReservaNom"
+            android:layout_width="52dp"
+            android:layout_height="37dp"
+            android:layout_alignEnd="@+id/ETIemReservaValorDataInici"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-3dp"
+            android:layout_marginEnd="122dp"
+            android:layout_marginBottom="18dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:text="@string/ItemNom"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TVItemReservaPreu"
+            android:layout_width="61dp"
+            android:layout_height="35dp"
+            android:layout_alignEnd="@+id/ETIemReservaValorDataInici"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="142dp"
+            android:layout_marginEnd="-14dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:text="@string/ItemPreu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#070707" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorNom"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginBottom="22dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorDataInici"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="75dp"
+            android:layout_marginBottom="65dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorDataFi"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="240dp"
+            android:layout_marginBottom="67dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorPreu"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="194dp"
+            android:layout_marginBottom="24dp"
+            android:layout_toEndOf="@+id/ETIemReservaimageView"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
