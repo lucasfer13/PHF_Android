@@ -1,11 +1,13 @@
 package com.example.phf_android;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
@@ -19,6 +21,7 @@ import java.util.Date;
 public class ReservesAdapter extends RecyclerView.Adapter<ReservesAdapter.ViewHolder>{
     ArrayList<Reserva> reserves;
     Context context;
+    private OnItemClickListener listener;
 
     public ReservesAdapter(ArrayList<com.example.phf_android.Reserva> reserves1, Context context)  {
         reserves=reserves1;
@@ -36,12 +39,22 @@ Log.d("hola","formen");
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder ViewHolder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder ViewHolder,@SuppressLint("RecyclerView") int position) {
         Log.d("hola","formen3");
         ViewHolder.bind(reserves.get(position));
         //ViewHolder.bind(position);
+        ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
+            }
+        });
     }
-
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
     @Override
     public int getItemCount() {return reserves.size();}
 
@@ -81,5 +94,8 @@ Log.d("hola","formen");
             return resources.getIdentifier(imatge, "drawable", context.getPackageName() );
 
         }
+    }
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }

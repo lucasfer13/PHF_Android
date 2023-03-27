@@ -11,6 +11,7 @@
     <string name="nomApp">PHF</string>
     <string name="reserves">RESERVES</string>
     <string name="mascotes">MASCOTES</string>
+    <string name="mascotes1">MASCOTES:</string>
     <string name="ubucacio">LLOC DE DESTI</string>
     <string name="dataInici">DATA INICI</string>
     <string name="dataFi">DATA FI</string>
@@ -33,8 +34,7 @@
     <string name="app">APP</string>
     <string name="pagament">METODES DE PAGAMENT</string>
     <string name="informacioLegal">INFORMACIO LEGAL</string>
-
-
+    <string name="veureCameres">VEURE CAMERES:</string>
 
     <string-array name="mascota_tipus">
         <item>Gos</item>

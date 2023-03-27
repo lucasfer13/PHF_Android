@@ -13,13 +13,20 @@
         android:theme="@style/Theme.PHF_Android"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityReserva"
-                        android:exported="false">
+            android:name=".ActivityDetallReserva"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-         <activity
+        <activity
+            android:name=".ActivityReserva"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ActivityConfiguracio"
             android:exported="false">
             <meta-data
