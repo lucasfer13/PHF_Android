@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -39,5 +40,20 @@ public class ActivityReserva extends AppCompatActivity {
         reserves.add(new Reserva(4,2,2,date1,date2,39.50,true));
         adapter = new ReservesAdapter(reserves,this);
         rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ReservesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Reserva reservaSeleccinada = reserves.get(position);
+                SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+                String dataInici=sdf.format(reservaSeleccinada.dataInici);
+                String dataFi=sdf.format(reservaSeleccinada.dataFi);
+                Intent intent = new Intent(ActivityReserva.this, ActivityDetallReserva.class);
+                intent.putExtra("idReserva",reservaSeleccinada.idReserva);
+                intent.putExtra("NomGuarderia",reservaSeleccinada.idGuarderia);
+                intent.putExtra("dataInici",dataInici);
+                intent.putExtra("dataFi",dataFi);
+                startActivity(intent);
+            }
+        });
     }
 }
