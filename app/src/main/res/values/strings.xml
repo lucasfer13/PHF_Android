@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">PHF_Android</string>
     <string name="registrar">RGISTRAR</string>
+    <string name="guardar">GUARDAR</string>
     <string name="usuari">USUARI</string>
     <string name="correu">CORREU</string>
     <string name="nom">NOM</string>
     <string name="cognom">COGNOMS</string>
     <string name="usuar">NOM USUARI</string>
     <string name="dni">DNI</string>
-    <string name="contrasenya">CONRASENYA</string>
+    <string name="contrasenya">CONTRASENYA</string>
+    <string name="canviarContrasenya">CANVIAR CONTRASENYA</string>
+    <string name="contrasenyaAnterior">CONTRASENYA ANTERIOR</string>
+    <string name="contrasenyaNova">CONTRASENYA NOVA</string>
+    <string name="contrasenyaRepetida">REPETEIX LA CONTRASENYA</string>
     <string name="nomApp">PHF</string>
     <string name="reserves">RESERVES</string>
     <string name="mascotes">MASCOTES</string>
