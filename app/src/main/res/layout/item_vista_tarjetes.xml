@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="117dp">
+
+        <TextView
+            android:id="@+id/TVItemReservaDataFi"
+            android:layout_width="49dp"
+            android:layout_height="27dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="78dp"
+            android:layout_marginEnd="97dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/cvv"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TVItemReservaNom"
+            android:layout_width="123dp"
+            android:layout_height="27dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-3dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="279dp"
+            android:layout_marginBottom="67dp"
+            android:text="@string/numTarjeta"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TVItemReservaPreu"
+            android:layout_width="155dp"
+            android:layout_height="29dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="-79dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/dataCaducitat"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#070707" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorNom"
+            android:layout_width="171dp"
+            android:layout_height="43dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="125dp"
+            android:layout_marginBottom="59dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/ETIemTarjetesValorData"
+            android:layout_width="104dp"
+            android:layout_height="43dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/ETIemReservaValorDataFi"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="74dp"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="4dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
