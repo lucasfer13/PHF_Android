@@ -50,7 +50,7 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
 
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Mascota mascota = mascotasData.get(position);
-
+        holder.binData(mascota);
         // Setea la informacion de la mascota en el ViewHolder
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
