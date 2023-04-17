@@ -23,21 +23,24 @@ public class ActivityReserva extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         Log.d("hola","formen2");
         ArrayList<Reserva> reserves =new ArrayList<Reserva>();
-        //Date date1 = null;
-        //Date date2 = null;
         ReservesAdapter adapter = null;
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha1 = null;
+        Date fecha2 = null;
+        String fechaString1 = "";
+        String fechaString2 = "";
         String temp1="01/01/2001";
         String temp2="02/02/2002";
-        //Date date1 = sdf.parse("01/01/2001");
-        //Date date2 = sdf.parse(temp2);
-        Date date1 =new Date(101,0,1);
-        Date date2 =new Date(102,1,2);
-
-        reserves.add(new Reserva(1,1,1,date1,date2,65.50,true));
-        reserves.add(new Reserva(2,1,2,date1,date2,85.50,true));
-        reserves.add(new Reserva(3,2,1,date1,date2,40.50,true));
-        reserves.add(new Reserva(4,2,2,date1,date2,39.50,true));
+        try {
+            fecha1 = formato.parse(temp1);
+            fecha2 = formato.parse(temp2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        reserves.add(new Reserva(1,1,1,fecha1,fecha2,65.50,true));
+        reserves.add(new Reserva(2,1,2,fecha1,fecha2,85.50,true));
+        reserves.add(new Reserva(3,2,1,fecha1,fecha2,40.50,true));
+        reserves.add(new Reserva(4,2,2,fecha1,fecha2,39.50,true));
         adapter = new ReservesAdapter(reserves,this);
         rv.setAdapter(adapter);
         adapter.setOnItemClickListener(new ReservesAdapter.OnItemClickListener() {

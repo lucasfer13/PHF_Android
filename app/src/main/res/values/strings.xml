@@ -28,6 +28,8 @@
     <string name="filtrar">FILTRAR</string>
     <string name="tornar">TORNAR</string>
     <string name="afegirMascota">AFEGIR MASCOTA</string>
+    <string name="afegirTarjeta">AFEGIR TARJETA</string>
+    <string name="TarjetaNova">TARJETA NOVA</string>
     <string name="buscar">BUSCAR</string>
     <string name="pes">PES</string>
     <string name="edat">EDAT</string>
@@ -40,7 +42,11 @@
     <string name="pagament">METODES DE PAGAMENT</string>
     <string name="informacioLegal">INFORMACIO LEGAL</string>
     <string name="veureCameres">VEURE CAMERES:</string>
-
+    <string name="cvv">CVV:</string>
+    <string name="dataCaducitat2">DATA DE CADUCITAT:</string>
+    <string name="numeroTarjeta">NUMERO TARJETA:</string>
+    <string name="dataCaducitat">Data de caducitat:</string>
+    <string name="numTarjeta">Num Tarjeta:</string>
     <string-array name="mascota_tipus">
         <item>Gos</item>
         <item>Gat</item>
