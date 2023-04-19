@@ -1,19 +1,26 @@
 package com.example.phf_android;
 
-public class Mascota {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Mascota implements Parcelable {
 
     public String foto;
     public String nom;
     public String tipus;
     public String edat;
     public String pes;
+    public String cartilla;
 
-    public Mascota( String foto, String nom, String tipus, String edat, String pes) {
+    public Mascota( String foto, String nom, String tipus, String edat, String pes, String cartilla) {
         this.foto = foto;
         this.nom = nom;
         this.tipus = tipus;
         this.edat = edat;
         this.pes = pes;
+        this.cartilla = cartilla;
     }
 
     public String getNom() {
@@ -54,5 +61,48 @@ public class Mascota {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getCartilla() {
+        return cartilla;
+    }
+
+    public void setCartilla(String foto) {
+        this.cartilla = cartilla;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(foto);
+        dest.writeString(nom);
+        dest.writeString(tipus);
+        dest.writeString(edat);
+        dest.writeString(pes);
+        dest.writeString(cartilla);
+    }
+
+    public static final Parcelable.Creator<Mascota> CREATOR
+            = new Parcelable.Creator<Mascota>() {
+        public Mascota createFromParcel(Parcel in) {
+            return new Mascota(in);
+        }
+
+        public Mascota[] newArray(int size) {
+            return new Mascota[size];
+        }
+    };
+
+    private Mascota(Parcel in) {
+        foto = in.readString();
+        nom = in.readString();
+        tipus = in.readString();
+        edat = in.readString();
+        pes = in.readString();
+        cartilla = in.readString();
     }
 }

@@ -21,10 +21,8 @@ public class ActivityMascotes extends AppCompatActivity {
 
     ArrayList<Mascota> mascotes;
     Context context=this;
-    Conexion conexio =new Conexion();
-    Connection cn = null;
-    Statement stm = null;
     ResultSet rs = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +30,7 @@ public class ActivityMascotes extends AppCompatActivity {
         mascotes = new ArrayList<>();
 
         try {
-            cn=conexio.conectar();
-            stm = cn.createStatement();
-            rs = stm.executeQuery("SELECT `animal`.`imatgePerfil`, `animal`.`nom`, `animal`.`cartilla`, `tipusanimal`.`Nom` FROM `animal` LEFT JOIN `tipusanimal` ON `animal`.`idTipusAnimal` = `tipusanimal`.`idTipusAnimal`;");
+            rs = Conexion.query(Constants.MOSTRAR_ANIMALS_ADAPTER);
 
             while(rs.next()) {
                 String urlFoto = rs.getString(1);
@@ -42,32 +38,15 @@ public class ActivityMascotes extends AppCompatActivity {
                 String cartilla = rs.getString(3);
                 String tipus = rs.getString(4);
 
-                mascotes.add(new Mascota(urlFoto,nom,tipus,"2 anys","11 kg"));
+                mascotes.add(new Mascota(urlFoto,nom,tipus,"2 anys","11 kg",cartilla));
                 Log.d("Connexion","Afegint mascotes");
 
             }
+
         }catch(SQLException e) {
             e.printStackTrace();
             Log.d("Connexion","Conexion fail");
-        }finally {
-            try {
-                if (rs!=null) {
-                    rs.close();
-                }
-                if (stm!=null) {
-                    stm.close();
-                }
-                if (rs!=null) {
-                    cn.close();
-                }
-
-
-            }catch(Exception e2) {
-                e2.printStackTrace();
-            }
         }
-
-
 
         Button reg = findViewById(R.id.btnMascotesAfegir);
         reg.setOnClickListener(new View.OnClickListener() {
@@ -78,14 +57,9 @@ public class ActivityMascotes extends AppCompatActivity {
             }
 
         });
+        Conexion.desconectar();
         init();
-
-
-
-
     }
-
-
 
     public void init(){
         ListAdapterMascota listAdapterMascota = new ListAdapterMascota(mascotes,this);
@@ -99,7 +73,7 @@ public class ActivityMascotes extends AppCompatActivity {
             public void onItemClick(int position) {
                 Mascota mascotaSeleccionada = mascotes.get(position);
                 Intent intent = new Intent(ActivityMascotes.this, ActivityDetallMascota.class);
-                //intent.putExtra("mascotaSeleccionada", mascotaSeleccionada);
+                intent.putExtra("mascotaSeleccionada", mascotaSeleccionada);
                 startActivity(intent);
             }
         });
