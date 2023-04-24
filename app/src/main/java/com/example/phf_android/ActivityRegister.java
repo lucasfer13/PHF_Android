@@ -1,5 +1,8 @@
 package com.example.phf_android;
 
+import static com.example.phf_android.Conexion.stm;
+import static com.example.phf_android.Constants.AFEGIR_USUARI_REGISTRE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -28,16 +31,9 @@ public class ActivityRegister extends AppCompatActivity {
     EditText Dni;
     EditText Correu;
     EditText Contrasenya;
-    String Nom1;
-    String NomUsuari1;
+    Usuari temp = new Usuari();
     String Cognoms1;
-    String Dni1;
-    String Correu1;
-    String Contrasenya1;
     Context context=this;
-    Conexion conexio =new Conexion();
-    Connection cn = null;
-    Statement stm = null;
     ResultSet rs = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +50,13 @@ public class ActivityRegister extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Nom1= String.valueOf(nom.getText());//
-                    NomUsuari1= String.valueOf(NomUsuari.getText());//
-                    Cognoms1= String.valueOf(Cognoms.getText());//
-                    Dni1= String.valueOf(Dni.getText());//
-                    Correu1= String.valueOf(Correu.getText());
-                    Contrasenya1= String.valueOf(Contrasenya.getText());//
-                    String[] AllCognoms=Cognoms1.split(" ");
+                    temp.setNom(String.valueOf(nom.getText()));
+                    temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
+                    temp.setCognoms(String.valueOf(Cognoms.getText()));
+                    temp.setDni(String.valueOf(Dni.getText()));
+                    temp.setCorreu(String.valueOf(Correu.getText()));
+                    temp.setContrasenya(String.valueOf(Contrasenya.getText()));
+                    String[] AllCognoms=temp.getCognoms().split(" ");
                     String Cognom1=AllCognoms[0];
                     String Cognom2=AllCognoms[1];
                     MessageDigest digest;
@@ -68,34 +64,19 @@ public class ActivityRegister extends AppCompatActivity {
                     try {
                         digest = MessageDigest.getInstance("SHA-1");
                         digest.reset();
-                        digest.update(Contrasenya1.getBytes("utf8"));
+                        digest.update(temp.getContrasenya().getBytes("utf8"));
                         sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    cn=conexio.conectar();
-                    stm = cn.createStatement();
-                    rs = stm.executeQuery("INSERT INTO `usuaris` (`documentIdentitat`, `nom`, `cognom1`, `cognom2`, `nomUsuari`, `contrasenya`, `correu`) VALUES ("+Dni1+", "+Nom1+", "+Cognom1+", "+Cognom2+", "+NomUsuari1+", "+sha1+", "+Correu1+");");
+                    rs = Conexion.query(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getCorreu()));
                 }catch(SQLException e) {
                     e.printStackTrace();
-                    Log.d("Connexion","Conexion fail");
-                }finally {
-                    try {
-                        if (rs!=null) {
-                            rs.close();
-                        }
-                        if (stm!=null) {
-                            stm.close();
-                        }
-                        if (rs!=null) {
-                            cn.close();
-                        }
-                    }catch(Exception e2) {
-                        e2.printStackTrace();
-                    }
+                    Log.d("Connexion","No registrat");
                 }
+                Conexion.desconectar();
             }
         });
     }

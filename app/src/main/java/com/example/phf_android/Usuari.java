@@ -8,6 +8,9 @@ public class Usuari {
     String Correu;
     String Contrasenya;
 
+    public Usuari() {
+    }
+
     public Usuari(String nom, String nomUsuari, String cognoms, String dni, String correu, String contrasenya) {
         Nom = nom;
         NomUsuari = nomUsuari;
