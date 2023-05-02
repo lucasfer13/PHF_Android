@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,20 +35,22 @@ public class ActivityPrincipal extends AppCompatActivity {
     private SimpleDateFormat sdf;
     private RecyclerView rv;
     private ListAdapterBusquedaGuarderia list;
+    private ArrayList<Guarderia> guarderies;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
+        guarderies = new ArrayList<>();
         sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         sv = findViewById(R.id.shvPrincipalBusqueda);
         sv.setOnQueryTextListener(search());
         initDatePicker();
         rv = findViewById(R.id.rcvActivityPrincipalGuarderies);
-        list = new ListAdapterBusquedaGuarderia(Guarderia.getBestGuarderies(), this);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        guarderies = Guarderia.getBestGuarderies();
+        list = new ListAdapterBusquedaGuarderia(guarderies, this);
+        rv.setLayoutManager(new LinearLayoutManager(ActivityPrincipal.this));
         rv.setHasFixedSize(true);
         rv.setAdapter(list);
         dateButtonStart = findViewById(R.id.dpkPrincipalDataInici);
@@ -104,41 +107,9 @@ public class ActivityPrincipal extends AppCompatActivity {
 
     }
 
-    private String makeDateString(int day, int month, int year)
-    {
-        return  year + "-" + month + "-" + day;
+    private String makeDateString(int day, int month, int year) {
+        return year + "-" + month + "-" + day;
     }
-    /*
-    private String getMonthFormat(int month)
-    {
-        if(month == 1)
-            return "GEN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "ABR";
-        if(month == 5)
-            return "MAI";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AGO";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
-    } */
 
     public void openDatePicker(View view)
     {
@@ -169,4 +140,5 @@ public class ActivityPrincipal extends AppCompatActivity {
             }
         };
     }
+
 }

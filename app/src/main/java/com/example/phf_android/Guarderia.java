@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.example.phf_android.Clases.Servei;
 
 import java.io.Serializable;
+import java.security.Guard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -135,6 +136,14 @@ public class Guarderia implements Parcelable {
         ResultSet rs = Conexion.query(String.format(Constants.CERCAR_GUARDERIES_ENABLED, nomBuscar, dataFi, dataInici));
         putGuarderies(rs, guarderias);
         return  guarderias;
+    }
+
+    public static ArrayList<Guarderia> getSortedListGuarderies() {
+        ArrayList<Guarderia> guarderias = new ArrayList<>();
+        ResultSet rs = null;
+        rs = Conexion.query(Constants.SORTED_GUARDERIES);
+        putGuarderies(rs, guarderias);
+        return guarderias;
     }
 
     @Override
