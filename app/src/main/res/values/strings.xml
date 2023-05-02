@@ -47,6 +47,7 @@
     <string name="numeroTarjeta">NUMERO TARJETA:</string>
     <string name="dataCaducitat">Data de caducitat:</string>
     <string name="numTarjeta">Num Tarjeta:</string>
+    <string name="GuarderiesTop">Top Guarderies</string>
     <string-array name="mascota_tipus">
         <item>Gos</item>
         <item>Gat</item>

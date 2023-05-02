@@ -31,7 +31,7 @@ public class ListAdapterBusquedaGuarderia extends RecyclerView.Adapter<ListAdapt
 
     @Override
     public ViewHolder onCreateViewHolder (ViewGroup parent, int viewType){
-        View view = mInFlater.inflate(R.layout.item_busqueda_guarderia, null);
+        View view = mInFlater.inflate(R.layout.item_busqueda_guarderia, parent, false);
         return new ViewHolder(view);
     }
 
@@ -44,26 +44,23 @@ public class ListAdapterBusquedaGuarderia extends RecyclerView.Adapter<ListAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
-        TextView nom, descripcio, ubicacio, valoracio, preu;
+        TextView nom, descripcio, ubicacio, valoracio;
 
         ViewHolder(View itemView){
             super(itemView);
-            image = itemView.findViewById(R.id.pcbLlistaImatge);
             nom = itemView.findViewById(R.id.txtLlistaNom);
             ubicacio = itemView.findViewById(R.id.txtLlistaUbicacio);
             descripcio = itemView.findViewById(R.id.txtLlistaDescripcio);
             valoracio = itemView.findViewById(R.id.txtLlistaValoracio);
-            preu = itemView.findViewById(R.id.txtLlistaPreu);
         }
 
         void binData(final Guarderia item){
-            image = itemView.findViewById(R.id.pcbLlistaImatge);
-            Glide.with(context).load(item.getFoto()).into(image);
+            //image = itemView.findViewById(R.id.pcbLlistaImatge);
+            //Glide.with(context).load(item.getFoto()).into(image);
             nom.setText(item.getNom());
             ubicacio.setText(item.getUbicacio());
             descripcio.setText(item.getDescripcio());
             valoracio.setText(item.getValoracio());
-            preu.setText(item.getPreu());
         }
     }
 }

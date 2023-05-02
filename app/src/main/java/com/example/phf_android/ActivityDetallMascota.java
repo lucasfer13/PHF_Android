@@ -35,11 +35,6 @@ public class ActivityDetallMascota extends AppCompatActivity {
         txtDetallMascotaTipus.setText(String.valueOf(mascotaSeleccionada.tipus));
         txtDetallMascotaCartilla.setText(String.valueOf(mascotaSeleccionada.cartilla));
 
-
-
-        guarderies.add(new Guarderia("/res/drawable/logophf.png","Guarde1","La Seu d'Urgell","Descripcio guarderia 1","5/5","25€"));
-        guarderies.add(new Guarderia("/res/drawable/logophf.png","Guarde2","Puigcerda","Descripcio guarderia 2","3/5","250€"));
-
         init();
     }
 

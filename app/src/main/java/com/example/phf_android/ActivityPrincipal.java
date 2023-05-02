@@ -2,21 +2,38 @@
 package com.example.phf_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.SearchView;
 
+import java.security.Guard;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ActivityPrincipal extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private Button dateButtonStart;
     private Button dateButtonFi;
+
+    private SearchView sv;
+
+    private boolean startDate;
+    private SimpleDateFormat sdf;
+    private RecyclerView rv;
+    private ListAdapterBusquedaGuarderia list;
 
 
     @Override
@@ -24,11 +41,19 @@ public class ActivityPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
+        sv = findViewById(R.id.shvPrincipalBusqueda);
+        sv.setOnQueryTextListener(search());
         initDatePicker();
+        rv = findViewById(R.id.rcvActivityPrincipalGuarderies);
+        list = new ListAdapterBusquedaGuarderia(Guarderia.getBestGuarderies(), this);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setHasFixedSize(true);
+        rv.setAdapter(list);
         dateButtonStart = findViewById(R.id.dpkPrincipalDataInici);
         dateButtonFi = findViewById(R.id.dpkPrincipalDataFi);
-
-
+        dateButtonStart.setText(getTodaysDate());
+        dateButtonFi.setText(getTodaysDate());
     }
 
     private String getTodaysDate()
@@ -50,11 +75,18 @@ public class ActivityPrincipal extends AppCompatActivity {
             {
                 month = month + 1;
                 String date = makeDateString(day, month, year);
-                if(dateButtonStart.isClickable()){
+                if(startDate){
                     dateButtonStart.setText(date);
-                }
-                if (dateButtonFi.isClickable()){
+                } else {
                     dateButtonFi.setText(date);
+                }
+                try {
+                    if (sdf.parse((String) dateButtonFi.getText()).compareTo(sdf.parse((String) dateButtonStart.getText())) < 0) {
+                        dateButtonFi.setText(date);
+                        dateButtonStart.setText(date);
+                    }
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
                 }
             }
 
@@ -74,9 +106,9 @@ public class ActivityPrincipal extends AppCompatActivity {
 
     private String makeDateString(int day, int month, int year)
     {
-        return  day + "/" + getMonthFormat(month) + "/" + year;
+        return  year + "-" + month + "-" + day;
     }
-
+    /*
     private String getMonthFormat(int month)
     {
         if(month == 1)
@@ -106,10 +138,35 @@ public class ActivityPrincipal extends AppCompatActivity {
 
         //default should never happen
         return "JAN";
-    }
+    } */
 
     public void openDatePicker(View view)
     {
+        if (view == dateButtonStart) {
+            startDate = true;
+        } else {
+            startDate = false;
+        }
         datePickerDialog.show();
+    }
+
+    public SearchView.OnQueryTextListener search() {
+        return new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                ArrayList<Guarderia> guarderias = Guarderia.searchGuarderies(sv.getQuery().toString(), dateButtonFi.getText().toString(), dateButtonStart.getText().toString());
+                if (guarderias.size() != 0) {
+                    Intent i = new Intent(ActivityPrincipal.this, ActivityBusqueda.class);
+                    i.putExtra("GUARDERIES",guarderias);
+                    startActivity(i);
+                }
+                return true;
+            }
+        };
     }
 }

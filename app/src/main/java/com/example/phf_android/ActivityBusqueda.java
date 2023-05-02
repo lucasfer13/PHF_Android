@@ -22,10 +22,6 @@ public class ActivityBusqueda extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
         guarderies = new ArrayList<>();
-
-        guarderies.add(new Guarderia("/res/drawable/logophf.png","Guarde1","La Seu d'Urgell","Descripcio guarderia 1","5/5","25€"));
-        guarderies.add(new Guarderia("/res/drawable/logophf.png","Guarde2","Puigcerda","Descripcio guarderia 2","3/5","250€"));
-
         init();
 
         Button reg = findViewById(R.id.btnBusquedaTornar);
@@ -39,10 +35,17 @@ public class ActivityBusqueda extends AppCompatActivity {
     }
 
     public void init(){
-        ListAdapterBusquedaGuarderia listAdapter = new ListAdapterBusquedaGuarderia(guarderies,this);
+        Intent i = getIntent();
+        ListAdapterBusquedaGuarderia listAdapter = null;
+        guarderies = i.getParcelableArrayListExtra("GUARDERIES");
+        if (guarderies != null) {
+            listAdapter = new ListAdapterBusquedaGuarderia(guarderies,this);
+        }
         RecyclerView recyclerView = findViewById(R.id.lisBusquedaGuarderies);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
+
+
     }
 }

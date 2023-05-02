@@ -1,21 +1,63 @@
 package com.example.phf_android;
 
-public class Guarderia {
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.example.phf_android.Clases.Servei;
+
+import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.xml.transform.Result;
+
+public class Guarderia implements Parcelable {
+    public int idGuarderia;
     public String foto;
     public String nom;
     public String ubicacio;
     public String descripcio;
     public String valoracio;
-    public String preu;
 
-    public Guarderia(String foto, String nom, String ubicacio, String descripcio, String valoracio, String preu) {
+    public ArrayList<Servei> serveis;
+
+    public Guarderia(int idGuarderia, String foto, String nom, String ubicacio, String descripcio, String valoracio) {
+        this.idGuarderia = idGuarderia;
         this.foto = foto;
         this.nom = nom;
         this.ubicacio = ubicacio;
         this.descripcio = descripcio;
         this.valoracio = valoracio;
-        this.preu = preu;
+        serveis = Servei.getServeisGuarderia(idGuarderia);
     }
+
+    public Guarderia() {
+    }
+
+    protected Guarderia(Parcel in) {
+        idGuarderia = in.readInt();
+        foto = in.readString();
+        nom = in.readString();
+        ubicacio = in.readString();
+        descripcio = in.readString();
+        valoracio = in.readString();
+    }
+
+    public static final Creator<Guarderia> CREATOR = new Creator<Guarderia>() {
+        @Override
+        public Guarderia createFromParcel(Parcel in) {
+            return new Guarderia(in);
+        }
+
+        @Override
+        public Guarderia[] newArray(int size) {
+            return new Guarderia[size];
+        }
+    };
 
     public String getFoto() {
         return foto;
@@ -57,13 +99,6 @@ public class Guarderia {
         this.valoracio = valoracio;
     }
 
-    public String getPreu() {
-        return preu;
-    }
-
-    public void setPreu(String preu) {
-        this.preu = preu;
-    }
 
     @Override
     public String toString() {
@@ -73,7 +108,47 @@ public class Guarderia {
                 ", ubicacio='" + ubicacio + '\'' +
                 ", descripcio='" + descripcio + '\'' +
                 ", valoracio=" + valoracio +
-                ", preu=" + preu +
                 '}';
+    }
+
+    public static ArrayList<Guarderia> getBestGuarderies() {
+        ArrayList<Guarderia> guarderias = new ArrayList<>();
+        ResultSet rs = null;
+        rs = Conexion.query(Constants.CERCAR_MILLOR_GUARDERIES);
+        putGuarderies(rs, guarderias);
+        return guarderias;
+    }
+
+    private static void putGuarderies(ResultSet rs, ArrayList<Guarderia> guarderias) {
+        try {
+            while (rs.next()) {
+                guarderias.add(new Guarderia(rs.getInt(1), "", rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+        } catch (Exception e) {
+            Log.d("GUARDERIES", e.getMessage());
+        }
+        Conexion.desconectar();
+    }
+
+    public static ArrayList<Guarderia> searchGuarderies(String nomBuscar, String dataFi, String dataInici) {
+        ArrayList<Guarderia> guarderias = new ArrayList<>();
+        ResultSet rs = Conexion.query(String.format(Constants.CERCAR_GUARDERIES_ENABLED, nomBuscar, dataFi, dataInici));
+        putGuarderies(rs, guarderias);
+        return  guarderias;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(idGuarderia);
+        dest.writeString(foto);
+        dest.writeString(nom);
+        dest.writeString(ubicacio);
+        dest.writeString(descripcio);
+        dest.writeString(valoracio);
     }
 }

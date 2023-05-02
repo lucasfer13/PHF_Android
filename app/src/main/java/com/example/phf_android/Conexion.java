@@ -8,10 +8,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Conexion {
     private static final String CONTROLADOR = "org.gjt.mm.mysql.Driver";
-    private static final String URL = "jdbc:mysql://192.168.1.150:25230/pethotelDB";
+    private static final String URL = "jdbc:mysql://webapps.insjoanbrudieu.cat:25230/pethotelDB";
     private static final String USUARIO="pethotel";
     private static final String PASSW="ElLuAlBe???!19876";
 
@@ -55,10 +56,15 @@ public class Conexion {
         }
     }
 
-    public static ResultSet query(String constant) throws SQLException {
+    public static ResultSet query(String constant) {
         cn = conexio.conectar();
-        stm = cn.createStatement();
-        rs = stm.executeQuery(constant);
+        try {
+            stm = cn.createStatement();
+            rs = stm.executeQuery(constant);
+        } catch (Exception e) {
+            Log.d("QUERY", e.getMessage());
+        }
         return rs;
     }
+
 }
