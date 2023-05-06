@@ -20,9 +20,9 @@ public class Constants {
     public static final String CERCAR_GUARDERIES_ENABLED = "SELECT g.idGuarderia as idGuarderia, g.nom as gnom, c.nom as cnom, g.descripcio as descripcio, g.avrating as rating FROM guarderia g" +
             " JOIN codipostal cp ON cp.idCP = g.idCP" +
             " JOIN ciutat c ON c.idCiutat = cp.idCiutat" +
-            " WHERE g.nom LIKE '%%%s%%' AND NOT g.idGuarderia = ANY (" +
+            " WHERE g.nom LIKE '%%%s%%' AND g.actiu = 1 AND NOT g.idGuarderia = ANY (" +
             "SELECT v.idGuarderia FROM vacances v" +
-            " WHERE v.dataFi >= '%s' AND g.actiu = 1 AND v.dataInici <= '%s'" +
+            " WHERE v.dataFi >= '%s' AND v.dataInici <= '%s'" +
             ")";
     public static final String CERCAR_SERVEIS_BY_IDGUARDERIA = "SELECT * FROM serveis s" +
             " JOIN serveisguarderia sg ON sg.idServei = s.idServei" +

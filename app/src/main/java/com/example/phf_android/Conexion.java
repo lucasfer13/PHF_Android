@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Conexion {
     private static final String CONTROLADOR = "org.gjt.mm.mysql.Driver";
     private static final String URL = "jdbc:mysql://webapps.insjoanbrudieu.cat:25230/pethotelDB";
+    private static final String URL_LOCAL = "jdbc:mysql://192.168.1.150:25230/pethotelDB";
     private static final String USUARIO="pethotel";
     private static final String PASSW="ElLuAlBe???!19876";
 
@@ -30,7 +31,7 @@ public class Conexion {
         Connection conexion = null;
         try {
             Class.forName(CONTROLADOR);
-            conexion = DriverManager.getConnection(URL,USUARIO,PASSW);
+            conexion = DriverManager.getConnection(URL_LOCAL,USUARIO,PASSW);
             Log.d("Connexion","Conexion ok");
 
         }catch(Exception e) {

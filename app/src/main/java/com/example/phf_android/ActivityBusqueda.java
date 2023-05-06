@@ -34,6 +34,7 @@ public class ActivityBusqueda extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private boolean startDate;
     private BottomSheetDialog bsd;
+    private ListAdapterBusquedaGuarderia listAdapter;
 
 
     @Override
@@ -56,14 +57,15 @@ public class ActivityBusqueda extends AppCompatActivity {
 
     public void init(){
         Intent i = getIntent();
-        ListAdapterBusquedaGuarderia listAdapter = null;
+        listAdapter = null;
         guarderies = i.getParcelableArrayListExtra("GUARDERIES");
         if (guarderies != null) {
             listAdapter = new ListAdapterBusquedaGuarderia(guarderies,this);
         } else {
             guarderies = new ArrayList<>();
+            guarderies = Guarderia.getSortedListGuarderies();
             listAdapter = new ListAdapterBusquedaGuarderia(guarderies,ActivityBusqueda.this);
-            guarderies = Guarderia.getSortedListGuarderies();;
+
         }
         RecyclerView recyclerView = findViewById(R.id.lisBusquedaGuarderies);
         recyclerView.setHasFixedSize(true);
@@ -79,7 +81,6 @@ public class ActivityBusqueda extends AppCompatActivity {
         dataFinal.setText(getTodaysDate());
         filter = findViewById(R.id.btnBusquedaFiltrar);
         filter.setOnClickListener(clickFilter());
-
     }
 
     private void search() {
@@ -91,7 +92,9 @@ public class ActivityBusqueda extends AppCompatActivity {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-
+                    guarderies = Guarderia.searchGuarderies(cuadreBusqueda.getText().toString(), dataFinal.getText().toString(), dataInici.getText().toString());
+                    listAdapter.setItems(guarderies);
+                    listAdapter.notifyDataSetChanged();
                 }
                 return false;
             }
