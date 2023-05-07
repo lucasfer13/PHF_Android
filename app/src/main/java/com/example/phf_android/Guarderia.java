@@ -6,10 +6,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.phf_android.Clases.Rating;
 import com.example.phf_android.Clases.Servei;
 
 import java.io.Serializable;
 import java.security.Guard;
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,14 +19,15 @@ import java.util.ArrayList;
 import javax.xml.transform.Result;
 
 public class Guarderia implements Parcelable {
-    public int idGuarderia;
-    public String foto;
-    public String nom;
-    public String ubicacio;
-    public String descripcio;
-    public String valoracio;
+    private int idGuarderia;
+    private String foto;
+    private String nom;
+    private String ubicacio;
+    private String descripcio;
+    private String valoracio;
 
-    public ArrayList<Servei> serveis;
+    private ArrayList<Servei> serveis;
+    private ArrayList<Rating> ratings;
 
     public Guarderia(int idGuarderia, String foto, String nom, String ubicacio, String descripcio, String valoracio) {
         this.idGuarderia = idGuarderia;
@@ -33,10 +36,15 @@ public class Guarderia implements Parcelable {
         this.ubicacio = ubicacio;
         this.descripcio = descripcio;
         this.valoracio = valoracio;
-        serveis = Servei.getServeisGuarderia(idGuarderia);
+
     }
 
     public Guarderia() {
+    }
+
+    public void getRelations() {
+        serveis = Servei.getServeisGuarderia(idGuarderia);
+        ratings = Rating.getRatingGuarderia(idGuarderia);
     }
 
     protected Guarderia(Parcel in) {
@@ -100,6 +108,29 @@ public class Guarderia implements Parcelable {
         this.valoracio = valoracio;
     }
 
+    public int getIdGuarderia() {
+        return idGuarderia;
+    }
+
+    public ArrayList<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(ArrayList<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void setIdGuarderia(int idGuarderia) {
+        this.idGuarderia = idGuarderia;
+    }
+
+    public ArrayList<Servei> getServeis() {
+        return serveis;
+    }
+
+    public void setServeis(ArrayList<Servei> serveis) {
+        this.serveis = serveis;
+    }
 
     @Override
     public String toString() {

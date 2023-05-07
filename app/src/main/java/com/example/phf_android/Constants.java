@@ -33,4 +33,9 @@ public class Constants {
             " JOIN ciutat c ON c.idCiutat = cp.idCiutat" +
             " WHERE g.actiu = 1" +
             " ORDER BY avRating DESC";
+
+    public static final String CERCAR_RATINGS_BY_IDGUARDERIA = "SELECT u.nom, r.rating FROM guarderia g" +
+            " JOIN valoracions r ON g.idGuarderia = r.idGuarderia" +
+            " JOIN usuaris u ON r.idUsuari = u.idUsuari" +
+            " WHERE g.idGuarderia = %d";
 }

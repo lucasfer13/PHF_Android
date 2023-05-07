@@ -31,7 +31,7 @@ public class Conexion {
         Connection conexion = null;
         try {
             Class.forName(CONTROLADOR);
-            conexion = DriverManager.getConnection(URL_LOCAL,USUARIO,PASSW);
+            conexion = DriverManager.getConnection(URL,USUARIO,PASSW);
             Log.d("Connexion","Conexion ok");
 
         }catch(Exception e) {
