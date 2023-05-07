@@ -1,23 +1,37 @@
 package com.example.phf_android;
 
 public class Usuari {
+    int Id;
     String Nom;
     String NomUsuari;
     String Cognoms;
     String Dni;
     String Correu;
+    String Telefon;
     String Contrasenya;
+    int Actiu;
 
     public Usuari() {
     }
 
-    public Usuari(String nom, String nomUsuari, String cognoms, String dni, String correu, String contrasenya) {
+    public Usuari(int id, String nom, String nomUsuari, String cognoms, String dni, String correu, String telefon, String contrasenya, int actiu) {
+        Id = id;
         Nom = nom;
         NomUsuari = nomUsuari;
         Cognoms = cognoms;
         Dni = dni;
         Correu = correu;
+        Telefon = telefon;
         Contrasenya = contrasenya;
+        Actiu = actiu;
+    }
+
+    public int getId(){
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getNom() {
@@ -52,6 +66,14 @@ public class Usuari {
         Dni = dni;
     }
 
+    public String getTelefon() {
+        return Telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        Telefon = telefon;
+    }
+
     public String getCorreu() {
         return Correu;
     }
@@ -66,6 +88,14 @@ public class Usuari {
 
     public void setContrasenya(String contrasenya) {
         Contrasenya = contrasenya;
+    }
+
+    public int getActiu() {
+        return Actiu;
+    }
+
+    public void setActiu(int actiu) {
+        Actiu = actiu;
     }
 
     @Override

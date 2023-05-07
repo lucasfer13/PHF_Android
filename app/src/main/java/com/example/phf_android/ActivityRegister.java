@@ -5,6 +5,7 @@ import static com.example.phf_android.Constants.AFEGIR_USUARI_REGISTRE;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -30,11 +32,13 @@ public class ActivityRegister extends AppCompatActivity {
     EditText Cognoms;
     EditText Dni;
     EditText Correu;
+    EditText Telefon;
     EditText Contrasenya;
     Usuari temp = new Usuari();
     String Cognoms1;
     Context context=this;
     ResultSet rs = null;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ public class ActivityRegister extends AppCompatActivity {
         Cognoms=findViewById(R.id.txtRegisterConoms);
         Dni=findViewById(R.id.txtRegisterDni);
         Correu=findViewById(R.id.txtRegisterCorreu);
+        Telefon=findViewById(R.id.txtRegisterTelefon);
         Contrasenya=findViewById(R.id.txtRegisterPassword);
         registrar=findViewById(R.id.btnRegistrarRegistrar);
         registrar.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +61,7 @@ public class ActivityRegister extends AppCompatActivity {
                     temp.setDni(String.valueOf(Dni.getText()));
                     temp.setCorreu(String.valueOf(Correu.getText()));
                     temp.setContrasenya(String.valueOf(Contrasenya.getText()));
+                    temp.setTelefon(String.valueOf(Telefon.getText()));
                     String[] AllCognoms=temp.getCognoms().split(" ");
                     String Cognom1=AllCognoms[0];
                     String Cognom2=AllCognoms[1];
@@ -71,12 +77,14 @@ public class ActivityRegister extends AppCompatActivity {
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    rs = Conexion.query(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getCorreu()));
+                    Conexion.update(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getTelefon(), temp.getCorreu()));
                 }catch(SQLException e) {
                     e.printStackTrace();
                     Log.d("Connexion","No registrat");
                 }
                 Conexion.desconectar();
+                Toast.makeText(getApplicationContext(), "S'ha completat el registre", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
