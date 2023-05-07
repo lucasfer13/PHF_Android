@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.phf_android.R;
 
 public class InformacioLegal extends AppCompatActivity {
     TextView contingut;

@@ -1,5 +1,5 @@
 
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,21 +8,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.SearchView;
 
-import java.security.Guard;
-import java.sql.SQLException;
+import com.example.phf_android.SQL.Constants;
+import com.example.phf_android.Clases.Guarderia;
+import com.example.phf_android.Adapters.ListAdapterBusquedaGuarderia;
+import com.example.phf_android.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class ActivityPrincipal extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;

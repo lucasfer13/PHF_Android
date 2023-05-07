@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.phf_android.Clases.Guarderia;
+import com.example.phf_android.Adapters.ListAdapterBusquedaGuarderia;
+import com.example.phf_android.Clases.Mascota;
+import com.example.phf_android.R;
 
 import java.util.ArrayList;
 

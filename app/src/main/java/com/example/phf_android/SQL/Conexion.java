@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.SQL;
 
 import android.os.StrictMode;
 import android.util.Log;
@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class Conexion {
     private static final String CONTROLADOR = "org.gjt.mm.mysql.Driver";

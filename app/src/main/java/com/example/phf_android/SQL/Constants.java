@@ -1,10 +1,9 @@
-package com.example.phf_android;
+package com.example.phf_android.SQL;
 
 public class Constants {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String MOSTRAR_ANIMALS_ADAPTER = "SELECT `animal`.`imatgePerfil`, `animal`.`nom`, `animal`.`cartilla`, `tipusanimal`.`Nom` FROM `animal` LEFT JOIN `tipusanimal` ON `animal`.`idTipusAnimal` = `tipusanimal`.`idTipusAnimal`;";
-    
-    public static final String AFEGIR_USUARI_REGISTRE = "INSERT INTO `usuaris` (`documentIdentitat`, `nom`, `cognom1`, `cognom2`, `nomUsuari`, `contrasenya`, `correu`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');";
+
     public static final String CERCAR_GUARDERIES_AMB_VACANCES = "SELECT g.idGuarderia FROM guarderia g JOIN" +
             " JOIN vacances v ON v.idGuarderia = g.idGuarderia " +
             " WHERE v.dataInici <= '{0}' AND v.dataFinal >= '{1}'" +

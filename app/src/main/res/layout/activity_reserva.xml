@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityReserva">
+    tools:context=".Activities.ActivityReserva">
 
     <fragment
         android:id="@+id/Fragment"
-        android:name="com.example.phf_android.FragmentPrincipal"
+        android:name="com.example.phf_android.Activities.FragmentPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.phf_android.R;
+import com.example.phf_android.Clases.Reserva;
+import com.example.phf_android.Adapters.ReservesAdapter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

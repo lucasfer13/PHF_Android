@@ -1,8 +1,7 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
@@ -16,6 +15,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.example.phf_android.SQL.Constants;
+import com.example.phf_android.Clases.Guarderia;
+import com.example.phf_android.Adapters.ListAdapterBusquedaGuarderia;
+import com.example.phf_android.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.ParseException;

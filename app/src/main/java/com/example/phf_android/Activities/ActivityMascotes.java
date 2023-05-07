@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,10 +11,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.sql.Connection;
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
+import com.example.phf_android.Adapters.ListAdapterMascota;
+import com.example.phf_android.Clases.Mascota;
+import com.example.phf_android.R;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ActivityMascotes extends AppCompatActivity {

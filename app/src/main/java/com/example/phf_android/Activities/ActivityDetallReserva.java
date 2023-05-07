@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.phf_android.R;
+import com.example.phf_android.Clases.Reserva;
+import com.example.phf_android.Adapters.ReservesAdapter;
 
 import java.util.ArrayList;
 

@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -20,15 +18,12 @@ import com.example.phf_android.Clases.Picture;
 import com.example.phf_android.Clases.PicturesGuarderia;
 import com.example.phf_android.FTPConexio.Connection;
 import com.example.phf_android.FTPConexio.XMLReader;
-import com.example.phf_android.Guarderia;
+import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.R;
 
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPConnectionClosedException;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class ActivityDetallGuarderia extends AppCompatActivity {
     Guarderia g;

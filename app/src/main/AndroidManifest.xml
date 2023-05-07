@@ -18,84 +18,84 @@
             android:name=".Activities.ActivityDetallGuarderia"
             android:exported="false" />
         <activity
-            android:name=".ActivityAfegirTarjeta"
+            android:name=".Activities.ActivityAfegirTarjeta"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityFormesDePago"
+            android:name=".Activities.ActivityFormesDePago"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityCanviarContrasenya"
+            android:name=".Activities.ActivityCanviarContrasenya"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityConfiguracioPerfil"
+            android:name=".Activities.ActivityConfiguracioPerfil"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".InformacioLegal"
+            android:name=".Activities.InformacioLegal"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityDetallReserva"
+            android:name=".Activities.ActivityDetallReserva"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityReserva"
+            android:name=".Activities.ActivityReserva"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityConfiguracio"
+            android:name=".Activities.ActivityConfiguracio"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityDetallMascota"
+            android:name=".Activities.ActivityDetallMascota"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityMascotes"
+            android:name=".Activities.ActivityMascotes"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityBusqueda"
+            android:name=".Activities.ActivityBusqueda"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityPrincipal"
+            android:name=".Activities.ActivityPrincipal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -108,21 +108,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityRegister"
+            android:name=".Activities.ActivityRegister"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityLogin"
+            android:name=".Activities.ActivityLogin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActivityAfegirMascota"
+            android:name=".Activities.ActivityAfegirMascota"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

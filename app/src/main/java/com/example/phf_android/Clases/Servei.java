@@ -2,12 +2,10 @@ package com.example.phf_android.Clases;
 
 import android.util.Log;
 
-import com.example.phf_android.Conexion;
-import com.example.phf_android.Constants;
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
 
-import java.sql.Array;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Servei {

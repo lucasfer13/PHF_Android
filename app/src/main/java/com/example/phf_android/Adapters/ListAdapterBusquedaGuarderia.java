@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.phf_android.Activities.ActivityDetallGuarderia;
+import com.example.phf_android.Clases.Guarderia;
+import com.example.phf_android.R;
 
 import java.util.ArrayList;
 import java.util.List;

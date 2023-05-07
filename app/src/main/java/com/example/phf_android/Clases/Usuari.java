@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Clases;
 
 public class Usuari {
     int Id;

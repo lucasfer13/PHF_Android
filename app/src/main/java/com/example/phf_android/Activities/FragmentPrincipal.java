@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.example.phf_android.R;
 
 public class FragmentPrincipal extends Fragment {
     Button btnFracmentReserva;
@@ -41,7 +43,7 @@ public class FragmentPrincipal extends Fragment {
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ActivityLogin.class);
+                Intent intent = new Intent(getActivity(), ActivityLogin.class);
                 startActivity(intent);
             }
 
@@ -58,7 +60,7 @@ public class FragmentPrincipal extends Fragment {
         btnFracmentReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ActivityReserva.class);
+                Intent intent = new Intent(getActivity(), ActivityReserva.class);
                 startActivity(intent);
             }
         });

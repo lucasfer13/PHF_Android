@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,17 +6,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.phf_android.Clases.Rating;
-import com.example.phf_android.Clases.Servei;
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
 
-import java.io.Serializable;
-import java.security.Guard;
-import java.sql.Array;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javax.xml.transform.Result;
 
 public class Guarderia implements Parcelable {
     private int idGuarderia;

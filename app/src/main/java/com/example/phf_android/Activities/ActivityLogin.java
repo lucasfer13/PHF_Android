@@ -1,7 +1,6 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
-import static com.example.phf_android.Constants.AFEGIR_USUARI_REGISTRE;
-import static com.example.phf_android.Constants.FER_LOGIN;
+import static com.example.phf_android.SQL.Constants.FER_LOGIN;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.R;
+import com.example.phf_android.Clases.Usuari;
+import com.example.phf_android.SQL.controlUsuario;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -73,7 +76,7 @@ public class ActivityLogin extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if(contra.equals(temp.Contrasenya)&&temp.getActiu()==1){
+                if(contra.equals(temp.getContrasenya())&&temp.getActiu()==1){
                     controlUsuario.usuari = temp;
                     Intent intent = new Intent (v.getContext(), ActivityConfiguracio.class);
                     startActivityForResult(intent, 0);

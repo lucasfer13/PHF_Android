@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.phf_android.Clases.Mascota;
+import com.example.phf_android.R;
 
 import java.util.List;
 

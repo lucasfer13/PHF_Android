@@ -1,10 +1,7 @@
 package com.example.phf_android.Clases;
 
-import android.renderscript.RenderScript;
-
-import com.example.phf_android.Conexion;
-import com.example.phf_android.Constants;
-import com.example.phf_android.R;
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

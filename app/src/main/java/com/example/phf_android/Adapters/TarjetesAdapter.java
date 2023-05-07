@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.phf_android.Clases.Tarjetes;
+import com.example.phf_android.R;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +24,7 @@ public class TarjetesAdapter extends RecyclerView.Adapter<TarjetesAdapter.ViewHo
     Context context;
     private TarjetesAdapter.OnItemClickListener listener;
 
-    public TarjetesAdapter(ArrayList<com.example.phf_android.Tarjetes> tarjetes1, Context context)  {
+    public TarjetesAdapter(ArrayList<Tarjetes> tarjetes1, Context context)  {
         tarjetes=tarjetes1;
         this.context=context;
         Log.d("hola","formen");

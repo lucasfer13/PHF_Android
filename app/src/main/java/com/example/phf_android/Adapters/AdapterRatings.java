@@ -1,20 +1,16 @@
 package com.example.phf_android.Adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.phf_android.Clases.Rating;
 import com.example.phf_android.R;
-import com.example.phf_android.ReservesAdapter;
 
 import java.util.ArrayList;
 

@@ -1,30 +1,28 @@
-package com.example.phf_android;
+package com.example.phf_android.Activities;
 
-import static com.example.phf_android.Conexion.stm;
-import static com.example.phf_android.Constants.AFEGIR_USUARI_REGISTRE;
+import static com.example.phf_android.SQL.Constants.AFEGIR_USUARI_REGISTRE;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.R;
+import com.example.phf_android.Clases.Usuari;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+
 public class ActivityRegister extends AppCompatActivity {
     Button registrar;
     EditText nom;

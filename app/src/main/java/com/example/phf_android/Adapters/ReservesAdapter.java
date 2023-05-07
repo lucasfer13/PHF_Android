@@ -1,4 +1,4 @@
-package com.example.phf_android;
+package com.example.phf_android.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.example.phf_android.Clases.Reserva;
+import com.example.phf_android.R;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +25,7 @@ public class ReservesAdapter extends RecyclerView.Adapter<ReservesAdapter.ViewHo
     Context context;
     private OnItemClickListener listener;
 
-    public ReservesAdapter(ArrayList<com.example.phf_android.Reserva> reserves1, Context context)  {
+    public ReservesAdapter(ArrayList<Reserva> reserves1, Context context)  {
         reserves=reserves1;
         this.context=context;
 Log.d("hola","formen");

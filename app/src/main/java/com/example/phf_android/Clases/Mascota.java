@@ -1,9 +1,7 @@
-package com.example.phf_android;
+package com.example.phf_android.Clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
 
 public class Mascota implements Parcelable {
 
