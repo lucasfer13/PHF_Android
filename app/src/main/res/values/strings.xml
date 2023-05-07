@@ -3,6 +3,7 @@
     <string name="registrar">RGISTRAR</string>
     <string name="guardar">GUARDAR</string>
     <string name="usuari">USUARI</string>
+    <string name="telefon">NUMERO DE TELEFON</string>
     <string name="correu">CORREU</string>
     <string name="nom">NOM</string>
     <string name="cognom">COGNOMS</string>

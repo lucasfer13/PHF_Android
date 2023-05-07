@@ -68,4 +68,9 @@ public class Conexion {
         return rs;
     }
 
+    public static void update(String constant) throws SQLException {
+        cn = conexio.conectar();
+        stm = cn.createStatement();
+        stm.executeUpdate(constant);
+    }
 }
