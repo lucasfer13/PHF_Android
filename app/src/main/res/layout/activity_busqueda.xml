@@ -20,29 +20,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnBusquedaOrdenar"
-        android:layout_width="150dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/aquamarine"
-        android:text="@string/ordenar"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/btnBusquedaFiltrar"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBusquedaTornar" />
-
-    <Button
         android:id="@+id/btnBusquedaFiltrar"
-        android:layout_width="150dp"
-        android:layout_height="38dp"
+        android:layout_width="157dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/aquamarine"
         android:text="@string/filtrar"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBusquedaBuscador" />
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBusquedaTornar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lisBusquedaGuarderies"
@@ -57,8 +45,8 @@
 
     <EditText
         android:id="@+id/txtBusquedaBuscador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/buscar"
@@ -66,11 +54,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toEndOf="@+id/btnBusquedaTornar"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
-
-
-
-    />
-
-]]>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
