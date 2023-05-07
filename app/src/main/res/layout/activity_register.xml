@@ -37,6 +37,19 @@
         app:layout_constraintTop_toBottomOf="@+id/txtRegisterUsuari" />
 
     <EditText
+        android:id="@+id/txtRegisterTelefon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/telefon"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegisterPassword" />
+
+    <EditText
         android:id="@+id/txtRegisterUsuari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
