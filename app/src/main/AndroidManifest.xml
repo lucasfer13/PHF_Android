@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PHF_Android"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.ActivityReservar"
+            android:exported="false" />
+        <activity
             android:name=".Activities.ActivityDetallGuarderia"
             android:exported="false" />
         <activity

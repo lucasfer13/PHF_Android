@@ -64,31 +64,19 @@ public class ActivityRegister extends AppCompatActivity {
                 MessageDigest digest;
                 String sha1 = "";
                 try {
-                    temp.setNom(String.valueOf(nom.getText()));
-                    temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
-                    temp.setCognoms(String.valueOf(Cognoms.getText()));
-                    temp.setDni(String.valueOf(Dni.getText()));
-                    temp.setCorreu(String.valueOf(Correu.getText()));
-                    temp.setContrasenya(String.valueOf(Contrasenya.getText()));
-                    temp.setTelefon(String.valueOf(Telefon.getText()));
-                    String[] AllCognoms=temp.getCognoms().split(" ");
-                    String Cognom1=AllCognoms[0];
-                    String Cognom2=AllCognoms[1];
-                    MessageDigest digest;
-                    String sha1 = "";
-                    try {
-                        digest = MessageDigest.getInstance("SHA-1");
-                        digest.reset();
-                        digest.update(temp.getContrasenya().getBytes("utf8"));
-                        sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                    Conexion.update(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getTelefon(), temp.getCorreu()));
-                }catch(SQLException e) {
+                    digest = MessageDigest.getInstance("SHA-1");
+                    digest.reset();
+                    digest.update(temp.getContrasenya().getBytes("utf8"));
+                    sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
+                } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Conexion.update(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getTelefon(), temp.getCorreu()));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
                 rs = Conexion.query(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getCorreu()));
                 Conexion.desconectar();

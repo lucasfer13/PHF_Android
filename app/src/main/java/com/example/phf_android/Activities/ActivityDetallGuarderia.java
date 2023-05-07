@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import com.example.phf_android.FTPConexio.Connection;
 import com.example.phf_android.FTPConexio.XMLReader;
 import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.R;
+import com.example.phf_android.SQL.ControlUsuario;
 
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -120,5 +123,23 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
                 f.delete();
             }
         }
+    }
+
+    private View.OnClickListener clickReserva() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                if (ControlUsuario.usuari != null) {
+                    i = new Intent(ActivityDetallGuarderia.this, ActivityReservar.class);
+                    i.putExtra("GUARDERIA", g);
+
+                } else {
+                    i = new Intent(ActivityDetallGuarderia.this, ActivityLogin.class);
+
+                }
+                startActivity(i);
+            }
+        };
     }
 }
