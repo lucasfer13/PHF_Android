@@ -52,11 +52,11 @@ public class ActivityReserva extends AppCompatActivity {
             public void onItemClick(int position) {
                 Reserva reservaSeleccinada = reserves.get(position);
                 SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-                String dataInici=sdf.format(reservaSeleccinada.dataInici);
-                String dataFi=sdf.format(reservaSeleccinada.dataFi);
+                String dataInici=sdf.format(reservaSeleccinada.getDataInici());
+                String dataFi=sdf.format(reservaSeleccinada.getDataFi());
                 Intent intent = new Intent(ActivityReserva.this, ActivityDetallReserva.class);
-                intent.putExtra("idReserva",reservaSeleccinada.idReserva);
-                intent.putExtra("NomGuarderia",reservaSeleccinada.idGuarderia);
+                intent.putExtra("idReserva", reservaSeleccinada.getIdReserva());
+                intent.putExtra("NomGuarderia", reservaSeleccinada.getIdGuarderia());
                 intent.putExtra("dataInici",dataInici);
                 intent.putExtra("dataFi",dataFi);
                 startActivity(intent);
