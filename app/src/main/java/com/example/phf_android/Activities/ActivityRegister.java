@@ -52,17 +52,6 @@ public class ActivityRegister extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                temp.setNom(String.valueOf(nom.getText()));
-                temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
-                temp.setCognoms(String.valueOf(Cognoms.getText()));
-                temp.setDni(String.valueOf(Dni.getText()));
-                temp.setCorreu(String.valueOf(Correu.getText()));
-                temp.setContrasenya(String.valueOf(Contrasenya.getText()));
-                String[] AllCognoms=temp.getCognoms().split(" ");
-                String Cognom1=AllCognoms[0];
-                String Cognom2=AllCognoms[1];
-                MessageDigest digest;
-                String sha1 = "";
                 try {
                     temp.setNom(String.valueOf(nom.getText()));
                     temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
@@ -73,7 +62,10 @@ public class ActivityRegister extends AppCompatActivity {
                     temp.setTelefon(String.valueOf(Telefon.getText()));
                     String[] AllCognoms=temp.getCognoms().split(" ");
                     String Cognom1=AllCognoms[0];
-                    String Cognom2=AllCognoms[1];
+                    String Cognom2 = "";
+                    if (AllCognoms.length >= 2) {
+                        Cognom2 = AllCognoms[1];
+                    }
                     MessageDigest digest;
                     String sha1 = "";
                     try {
@@ -90,8 +82,6 @@ public class ActivityRegister extends AppCompatActivity {
                 }catch(SQLException e) {
                     e.printStackTrace();
                 }
-                rs = Conexion.query(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getCorreu()));
-                Conexion.desconectar();
                 Toast.makeText(getApplicationContext(), "S'ha completat el registre", Toast.LENGTH_SHORT).show();
                 finish();
             }

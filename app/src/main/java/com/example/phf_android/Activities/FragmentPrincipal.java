@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.phf_android.R;
+import com.example.phf_android.SQL.controlUsuario;
 
 public class FragmentPrincipal extends Fragment {
     Button btnFracmentReserva;
@@ -43,8 +44,14 @@ public class FragmentPrincipal extends Fragment {
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ActivityLogin.class);
-                startActivity(intent);
+                if (controlUsuario.usuari==null){
+                    Intent intent = new Intent(getActivity(), ActivityLogin.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity(), ActivityConfiguracio.class);
+                    startActivity(intent);
+                }
+
             }
 
         });
