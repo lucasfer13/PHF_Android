@@ -41,5 +41,5 @@ public class Constants {
     public static final String AFEGIR_USUARI_REGISTRE = "INSERT INTO `usuaris` (`DocumentIdentitat`, `nom`, `cognom1`, `cognom2`, `nomUsuari`, `contrasenya`, `telefon`, `correu`, `actiu` , `tipusUsuari`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 1, 3);";
     public static final String FER_LOGIN = "SELECT * FROM `usuaris` WHERE nomUsuari='%s';";
     public static final String MODIFICAR_USUARI = "UPDATE usuaris SET DocumentIdentitat = '%s', nom = '%s', cognom1 = '%s', cognom2 = '%s', nomUsuari = '%s', correu = '%s' WHERE IdUsuari = %d;";
-
+    public static final String MODIFICAR_CONTRASENYA = "UPDATE usuaris SET `contrasenya` = '%s' WHERE IdUsuari = %d;";
 }
