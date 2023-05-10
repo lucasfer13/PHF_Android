@@ -28,21 +28,17 @@ public class ReservesAdapter extends RecyclerView.Adapter<ReservesAdapter.ViewHo
     public ReservesAdapter(ArrayList<Reserva> reserves1, Context context)  {
         reserves=reserves1;
         this.context=context;
-Log.d("hola","formen");
     }
     @NonNull
     @Override
     public ReservesAdapter.ViewHolder onCreateViewHolder( ViewGroup ViewGroup, int viewType) {
-        Log.d("hola","formen4");
         View view = LayoutInflater.from(ViewGroup.getContext())
                 .inflate(R.layout.item_vista_detall_reserva,ViewGroup,false);
-        Log.d("hola","formen3");
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder ViewHolder,@SuppressLint("RecyclerView") int position) {
-        Log.d("hola","formen3");
         ViewHolder.bind(reserves.get(position));
         //ViewHolder.bind(position);
         ViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

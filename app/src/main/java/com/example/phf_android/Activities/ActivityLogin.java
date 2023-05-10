@@ -13,7 +13,7 @@ import android.widget.EditText;
 import com.example.phf_android.SQL.Conexion;
 import com.example.phf_android.R;
 import com.example.phf_android.Clases.Usuari;
-import com.example.phf_android.SQL.controlUsuario;
+import com.example.phf_android.SQL.ControlUsuario;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -77,14 +77,12 @@ public class ActivityLogin extends AppCompatActivity {
                 }
 
                 if(contra.equals(temp.getContrasenya())&&temp.getActiu()==1){
-                    controlUsuario.usuari = temp;
-                    Intent intent = new Intent (v.getContext(), ActivityPrincipal.class);
-                    startActivityForResult(intent, 0);
+                    ControlUsuario.usuari = temp;
+                    Intent intent = new Intent (v.getContext(), ActivityConfiguracio.class);
+                    startActivity(intent);
                 } else {
 
                 }
-
-
             }
         });
     }

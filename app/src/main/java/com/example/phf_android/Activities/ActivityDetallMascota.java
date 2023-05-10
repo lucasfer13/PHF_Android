@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.Adapters.ListAdapterBusquedaGuarderia;
 import com.example.phf_android.Clases.Mascota;
@@ -39,6 +41,12 @@ public class ActivityDetallMascota extends AppCompatActivity {
         txtDetallMascotaEdat.setText(String.valueOf(mascotaSeleccionada.edat));
         txtDetallMascotaTipus.setText(String.valueOf(mascotaSeleccionada.tipus));
         txtDetallMascotaCartilla.setText(String.valueOf(mascotaSeleccionada.cartilla));
+        ImageView image = findViewById(R.id.pcbDetallMascotaFoto);
+        if (mascotaSeleccionada.getFoto() != null && !mascotaSeleccionada.getFoto().equals("")) {
+            Glide.with(context).load(mascotaSeleccionada.getFoto()).into(image);
+        } else {
+            image.setImageResource(R.drawable.logophf);
+        }
 
         init();
     }

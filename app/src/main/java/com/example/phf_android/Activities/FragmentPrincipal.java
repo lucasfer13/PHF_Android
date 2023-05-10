@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.phf_android.R;
-import com.example.phf_android.SQL.controlUsuario;
+import com.example.phf_android.SQL.ControlUsuario;
 
 public class FragmentPrincipal extends Fragment {
     Button btnFracmentReserva;
@@ -44,14 +44,10 @@ public class FragmentPrincipal extends Fragment {
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (controlUsuario.usuari==null){
-                    Intent intent = new Intent(getActivity(), ActivityLogin.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getActivity(), ActivityConfiguracio.class);
-                    startActivity(intent);
-                }
-
+                Intent intent;
+                if (ControlUsuario.usuari != null) intent = new Intent(getActivity(), ActivityLogin.class);
+                else intent = new Intent(v.getContext(), ActivityLogin.class);
+                startActivity(intent);
             }
 
         });
@@ -60,14 +56,16 @@ public class FragmentPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (v.getContext(), ActivityBusqueda.class);
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             }
         });
         Button btnFracmentReserva = (Button) view.findViewById(R.id.btnFracmentReserva);
         btnFracmentReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ActivityReserva.class);
+                Intent intent;
+                if (ControlUsuario.usuari != null) intent = new Intent(getActivity(), ActivityReserva.class);
+                else intent = new Intent(v.getContext(), ActivityLogin.class);
                 startActivity(intent);
             }
         });
@@ -75,8 +73,10 @@ public class FragmentPrincipal extends Fragment {
         mascotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), ActivityMascotes.class);
-                startActivityForResult(intent, 0);
+                Intent intent;
+                if (ControlUsuario.usuari != null) intent = new Intent (v.getContext(), ActivityMascotes.class);
+                else intent = new Intent(v.getContext(), ActivityLogin.class);
+                startActivity(intent);
             }
         });
         return view;

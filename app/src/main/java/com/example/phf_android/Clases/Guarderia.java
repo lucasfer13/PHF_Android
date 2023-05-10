@@ -23,6 +23,8 @@ public class Guarderia implements Parcelable {
     private ArrayList<Servei> serveis;
     private ArrayList<Rating> ratings;
 
+    private ArrayList<TipusHabitacio> tipusHabitacios;
+
     public Guarderia(int idGuarderia, String foto, String nom, String ubicacio, String descripcio, String valoracio) {
         this.idGuarderia = idGuarderia;
         this.foto = foto;
@@ -39,6 +41,11 @@ public class Guarderia implements Parcelable {
     public void getRelations() {
         serveis = Servei.getServeisGuarderia(idGuarderia);
         ratings = Rating.getRatingGuarderia(idGuarderia);
+    }
+
+    public void fillTipusHabitacions()
+    {
+        tipusHabitacios = TipusHabitacio.getTipusHabitacionsByID(this.idGuarderia);
     }
 
     protected Guarderia(Parcel in) {

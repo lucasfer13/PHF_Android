@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/dpkSelectReservaDataFi"
+        style="?android:spinnerStyle"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="openDatePicker"
+        android:text="12/12/2022"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSelectReservaDataFi" />
+
+    <Button
+        android:id="@+id/dpkSelectReservaDataInici"
+        style="?android:spinnerStyle"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:onClick="openDatePicker"
+        android:text="12/12/2022"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSelectReservaDataInici" />
+
+    <TextView
+        android:id="@+id/lblSelectReservaDataInici"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:text="Data Inici"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblSelectReservaDataFi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="64dp"
+        android:text="Data fi"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/cmbSelectReservaTipusHabitacio"
+        android:layout_width="215dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dpkSelectReservaDataInici" />
+
+    <TextView
+        android:id="@+id/lblSelectReservaSelectTipusHabitacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="28dp"
+        android:text="Tipus habitació"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cmbSelectReservaTipusHabitacio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dpkSelectReservaDataInici"
+        app:layout_constraintVertical_bias="0.277" />
+
+    <Button
+        android:id="@+id/btnSelectReservaPagar"
+        android:layout_width="139dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="Pagar"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmbSelectReservaTipusHabitacio" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,14 +2,22 @@ package com.example.phf_android.SQL;
 
 public class Constants {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
-    public static final String MOSTRAR_ANIMALS_ADAPTER = "SELECT `animal`.`imatgePerfil`, `animal`.`nom`, `animal`.`cartilla`, `tipusanimal`.`Nom` FROM `animal` LEFT JOIN `tipusanimal` ON `animal`.`idTipusAnimal` = `tipusanimal`.`idTipusAnimal`;";
+    public static final String MOSTRAR_ANIMALS_ADAPTER = "SELECT `animal`.`idAnimal`, `animal`.`imatgePerfil`, `animal`.`nom`, `animal`.`cartilla`, `tipusanimal`.`Nom`, `animal`.`pes`, `animal`.`edat` FROM `animal` " +
+            " LEFT JOIN `tipusanimal` ON `animal`.`idTipusAnimal` = `tipusanimal`.`idTipusAnimal`" +
+            " JOIN usuaris u ON u.idUsuari = animal.idUsuari" +
+            " WHERE u.idUsuari = %d";
 
-    public static final String CERCAR_GUARDERIES_AMB_VACANCES = "SELECT g.idGuarderia FROM guarderia g JOIN" +
-            " JOIN vacances v ON v.idGuarderia = g.idGuarderia " +
-            " WHERE v.dataInici <= '{0}' AND v.dataFinal >= '{1}'" +
-            " ";
+    public static final String CERCAR_TIPUS_HABITACIONS_GUARDERIA = "SELECT th.idTipusHabitacio, th.nom, th.preu FROM tipushabitacio th" +
+            " JOIN guarderia g ON th.idGuarderia = g.idGuarderia" +
+            " WHERE g.idGuarderia = %d";
 
-    public static final String CERCAR_GUARDERIES = "SELECT * FROM guarderia";
+    public static final String CERCAR_TIPUS_ANIMALS_TIPUS_HABITACIONS = "SELECT ta.idTipusAnimal, ta.nom FROM tipusanimal ta" +
+            " JOIN animal_tipushabitacio ath ON ath.idTipusAnimal = ta.idTipusAnimal" +
+            " JOIN tipushabitacio th ON th.idTipusHabitacio = ta.idTipusHabitacio" +
+            " WHERE th.idTipusHabitacio = %d";
+
+    public static final String INSERT_MASCOTA = "INSERT INTO animal (idTipusAnimal, idUsuari, nom, cartilla, pes, edat) VALUES (%d, %d,'%s', '%s', %e, %d)";
+    public static final String CERCAR_TIPUS_ANIMALS = "SELECT * FROM tipusanimal";
     public static final String CERCAR_MILLOR_GUARDERIES = "SELECT g.idGuarderia as idGuarderia, g.nom as gnom, c.nom as cnom, g.descripcio as descripcio, g.avrating as rating FROM guarderia g" +
             " JOIN codipostal cp ON cp.idCP = g.idCP" +
             " JOIN ciutat c ON c.idCiutat = cp.idCiutat" +
@@ -38,6 +46,7 @@ public class Constants {
             " JOIN valoracions r ON g.idGuarderia = r.idGuarderia" +
             " JOIN usuaris u ON r.idUsuari = u.idUsuari" +
             " WHERE g.idGuarderia = %d";
+
     public static final String AFEGIR_USUARI_REGISTRE = "INSERT INTO `usuaris` (`DocumentIdentitat`, `nom`, `cognom1`, `cognom2`, `nomUsuari`, `contrasenya`, `telefon`, `correu`, `actiu` , `tipusUsuari`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 1, 3);";
     public static final String FER_LOGIN = "SELECT * FROM `usuaris` WHERE nomUsuari='%s';";
     public static final String MODIFICAR_USUARI = "UPDATE usuaris SET DocumentIdentitat = '%s', nom = '%s', cognom1 = '%s', cognom2 = '%s', nomUsuari = '%s', correu = '%s' WHERE IdUsuari = %d;";
