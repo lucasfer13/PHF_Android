@@ -81,10 +81,15 @@ public class ListAdapterMascota extends RecyclerView.Adapter<ListAdapterMascota.
 
         void binData(final Mascota item){
             image = itemView.findViewById(R.id.pcbMascotaFoto);
-            Glide.with(context).load(item.getFoto()).into(image);
+            if (item.getFoto() != null && !item.getFoto().equals("")) {
+                Glide.with(context).load(item.getFoto()).into(image);
+            } else {
+                //Glide.with(context).load(context.getDrawable(R.drawable.logophf)).into(image);
+                image.setImageResource(R.drawable.logophf);
+            }
             nom.setText(item.getNom());
-            edat.setText(item.getEdat());
-            pes.setText(item.getPes());
+            edat.setText(item.getEdat()+"");
+            pes.setText(item.getPes()+" kg");
             tipus.setText(item.getTipus());
         }
     }

@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ActivityReservar">
 
+    <TextView
+        android:id="@+id/lblReservarTitol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="16dp"
+        android:text="Selecciona mascotes"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvReservarAnimals"
+        android:layout_width="match_parent"
+        android:layout_height="547dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblReservarTitol" />
+
+    <Button
+        android:id="@+id/btnReservarAplicar"
+        android:layout_width="153dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="128dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="Reservar"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvReservarAnimals" />
 </androidx.constraintlayout.widget.ConstraintLayout>

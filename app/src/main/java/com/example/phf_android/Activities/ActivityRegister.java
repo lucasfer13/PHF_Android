@@ -73,11 +73,7 @@ public class ActivityRegister extends AppCompatActivity {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                try {
                     Conexion.update(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getTelefon(), temp.getCorreu()));
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
                 rs = Conexion.query(String.format(AFEGIR_USUARI_REGISTRE , temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), sha1, temp.getCorreu()));
                 Conexion.desconectar();
                 Toast.makeText(getApplicationContext(), "S'ha completat el registre", Toast.LENGTH_SHORT).show();

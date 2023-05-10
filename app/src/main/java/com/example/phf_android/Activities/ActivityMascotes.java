@@ -16,6 +16,7 @@ import com.example.phf_android.SQL.Constants;
 import com.example.phf_android.Adapters.ListAdapterMascota;
 import com.example.phf_android.Clases.Mascota;
 import com.example.phf_android.R;
+import com.example.phf_android.SQL.ControlUsuario;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,18 +35,22 @@ public class ActivityMascotes extends AppCompatActivity {
         mascotes = new ArrayList<>();
 
         try {
-            rs = Conexion.query(Constants.MOSTRAR_ANIMALS_ADAPTER);
+            rs = Conexion.query(String.format(Constants.MOSTRAR_ANIMALS_ADAPTER, ControlUsuario.usuari.getId()));
 
             while(rs.next()) {
-                String urlFoto = rs.getString(1);
-                String nom = rs.getString(2);
-                String cartilla = rs.getString(3);
-                String tipus = rs.getString(4);
+                int id = rs.getInt(1);
+                String urlFoto = rs.getString(2);
+                String nom = rs.getString(3);
+                String cartilla = rs.getString(4);
+                String tipus = rs.getString(5);
+                double pes = rs.getDouble(6);
+                int edat = rs.getInt(7);
 
-                mascotes.add(new Mascota(urlFoto,nom,tipus,"2 anys","11 kg",cartilla));
+                mascotes.add(new Mascota(id, urlFoto,nom,tipus,edat,pes,cartilla));
                 Log.d("Connexion","Afegint mascotes");
 
             }
+            Conexion.desconectar();
 
         }catch(SQLException e) {
             e.printStackTrace();

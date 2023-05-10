@@ -24,6 +24,7 @@ import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.R;
 import com.example.phf_android.SQL.ControlUsuario;
 
+
 import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.File;
@@ -79,6 +80,18 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
         }
     }
 
+    private void getImatgeLocal(File f) {
+        File[] files = f.listFiles();
+        images = new Bitmap[files.length-1];
+        int i = 0;
+        for (File tmp : files) {
+            if (!tmp.getName().equals("version.xml")) {
+                images[i] = BitmapFactory.decodeFile(tmp.getAbsolutePath());
+                i++;
+            }
+        }
+    }
+
     private void haveNew() {
         File f = new File(getFilesDir(), g.getIdGuarderia()+"");
         File tmp = new File(getFilesDir(), "tmp.xml");
@@ -93,6 +106,8 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
                             "ion.xml");
                     deleteImages(f);
                     getImages(f, pgRemot);
+                } else {
+                    getImatgeLocal(f);
                 }
             } else {
                 f.mkdir();

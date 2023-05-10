@@ -3,22 +3,55 @@ package com.example.phf_android.Clases;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
+
+import java.sql.SQLException;
+
 public class Mascota implements Parcelable {
 
+    public int id;
     public String foto;
     public String nom;
     public String tipus;
-    public String edat;
-    public String pes;
+    public int edat;
+    public double pes;
     public String cartilla;
 
-    public Mascota( String foto, String nom, String tipus, String edat, String pes, String cartilla) {
+    public TipusAnimals ta;
+
+    public Mascota(int id, String foto, String nom, String tipus, int edat, double pes, String cartilla) {
+        this.id = id;
         this.foto = foto;
         this.nom = nom;
         this.tipus = tipus;
         this.edat = edat;
         this.pes = pes;
         this.cartilla = cartilla;
+    }
+
+    public Mascota(String nom, int edat, double pes, String cartilla, TipusAnimals ta) {
+        this.nom = nom;
+        this.edat = edat;
+        this.pes = pes;
+        this.cartilla = cartilla;
+        this.ta = ta;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getNom() {
@@ -37,36 +70,36 @@ public class Mascota implements Parcelable {
         this.tipus = tipus;
     }
 
-    public String getEdat() {
+    public int getEdat() {
         return edat;
     }
 
-    public void setEdat(String edat) {
+    public void setEdat(int edat) {
         this.edat = edat;
     }
 
-    public String getPes() {
+    public double getPes() {
         return pes;
     }
 
-    public void setPes(String pes) {
+    public void setPes(double pes) {
         this.pes = pes;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public String getCartilla() {
         return cartilla;
     }
 
-    public void setCartilla(String foto) {
+    public void setCartilla(String cartilla) {
         this.cartilla = cartilla;
+    }
+
+    public TipusAnimals getTa() {
+        return ta;
+    }
+
+    public void setTa(TipusAnimals ta) {
+        this.ta = ta;
     }
 
     @Override
@@ -79,8 +112,8 @@ public class Mascota implements Parcelable {
         dest.writeString(foto);
         dest.writeString(nom);
         dest.writeString(tipus);
-        dest.writeString(edat);
-        dest.writeString(pes);
+        dest.writeInt(edat);
+        dest.writeDouble(pes);
         dest.writeString(cartilla);
     }
 
@@ -95,12 +128,16 @@ public class Mascota implements Parcelable {
         }
     };
 
+    public void addMascota(int idUsuari) {
+        Conexion.update(String.format(Constants.INSERT_MASCOTA, ta.getId(), idUsuari, nom, cartilla, pes, edat));
+    }
+
     private Mascota(Parcel in) {
         foto = in.readString();
         nom = in.readString();
         tipus = in.readString();
-        edat = in.readString();
-        pes = in.readString();
+        edat = in.readInt();
+        pes = in.readDouble();
         cartilla = in.readString();
     }
 }

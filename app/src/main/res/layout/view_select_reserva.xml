@@ -76,4 +76,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dpkSelectReservaDataInici"
         app:layout_constraintVertical_bias="0.277" />
+
+    <Button
+        android:id="@+id/btnSelectReservaPagar"
+        android:layout_width="139dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/aquamarine"
+        android:text="Pagar"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmbSelectReservaTipusHabitacio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
