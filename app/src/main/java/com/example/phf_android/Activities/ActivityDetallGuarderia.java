@@ -28,14 +28,18 @@ import com.example.phf_android.SQL.ControlUsuario;
 import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ActivityDetallGuarderia extends AppCompatActivity {
     Guarderia g;
     TextView titol;
     TextView desc;
     Button reserva;
-    FTPClient ftp;
-    Connection c;
     ViewPager vp;
     Bitmap[] images;
     RatingBar rating;
@@ -55,8 +59,6 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
         desc = findViewById(R.id.lblDetallGuarderiaDesc);
         desc.setText(g.getDescripcio());
         titol.setText(g.getNom());
-        c = new Connection();
-        ftp = c.conect();
         vp = findViewById(R.id.vwpDetallGuarderiaImatges);
         rating = findViewById(R.id.rtbDetallGuarderiaRating);
         rating.setRating(Float.parseFloat(g.getValoracio()));
@@ -68,14 +70,15 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
         rc.setLayoutManager(new LinearLayoutManager(this));
         rc.setAdapter(adapter);
         reserva = findViewById(R.id.btnDetallGuarderiaReserva);
+        reserva.setOnClickListener(clickReserva());
     }
 
     private void getImages(File f, PicturesGuarderia pg) {
         images = new Bitmap[pg.getPictures().size()];
         int i = 0;
         for (Picture p : pg.getPictures()) {
-            c.downloadFile(ftp, "/"+g.getIdGuarderia()+"/"+p.getName(), f.getPath()+"/"+p.getName());
-            images[i]  = BitmapFactory.decodeFile(new File(f.getPath()+"/"+p.getName()).getAbsolutePath());
+            downloadFile("http://pethotelfinder.000webhostapp.com/"+g.getIdGuarderia()+"/"+p.getName(), new File(f, p.getName()));
+            images[i] = BitmapFactory.decodeFile(new File(f.getPath()+"/"+p.getName()).getAbsolutePath());
             i++;
         }
     }
@@ -92,18 +95,63 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
         }
     }
 
+    private boolean xmlExists() {
+        try {
+            URL url =  new URL("http://pethotelfinder.000webhostapp.com/"+g.getIdGuarderia()+"/"+"version.xml");
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setConnectTimeout(500);
+            http.connect();
+            int code = http.getResponseCode();
+            if (code == HttpURLConnection.HTTP_NOT_FOUND) {
+                return false;
+            }
+            http.disconnect();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public void downloadFile(String path, File f) {
+        URL url = null;
+        try {
+            url = new URL(path);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setConnectTimeout(500);
+            http.connect();
+            FileOutputStream fos = new FileOutputStream(f);
+            InputStream is = http.getInputStream();
+            byte[] buffer = new byte[1024];
+            int bufferLength = 0;
+
+            while ((bufferLength = is.read(buffer)) > 0) {
+                fos.write(buffer, 0, bufferLength);
+            }
+            is.close();
+            fos.flush();
+            fos.close();
+            http.disconnect();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     private void haveNew() {
         File f = new File(getFilesDir(), g.getIdGuarderia()+"");
         File tmp = new File(getFilesDir(), "tmp.xml");
-        if (c.directoryExists(ftp, "/"+g.getIdGuarderia())) {
+        if (xmlExists()) {
             XMLReader xml = new XMLReader();
-            c.downloadFile(ftp, "/"+g.getIdGuarderia()+"/version.xml", tmp.getPath());
+            downloadFile("http://pethotelfinder.000webhostapp.com/"+g.getIdGuarderia()+"/"+"version.xml", tmp);
             PicturesGuarderia pgRemot = xml.xmlToGuarderia(tmp);
             if (f.exists()) {
                 PicturesGuarderia pgLocal = xml.xmlToGuarderia(new File(f, "version.xml"));
                 if (pgRemot.getData().compareTo(pgLocal.getData()) != 0) {
-                    c.downloadFile(ftp, "/"+g.getIdGuarderia()+"/version.xml", f.getPath()+"/version.xml" +
-                            "ion.xml");
+                    downloadFile("http://pethotelfinder.000webhostapp.com/"+g.getIdGuarderia()+"/"+"version.xml", new File(f, "version.xml"));
                     deleteImages(f);
                     getImages(f, pgRemot);
                 } else {
@@ -111,12 +159,11 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
                 }
             } else {
                 f.mkdir();
-                c.downloadFile(ftp, "/"+g.getIdGuarderia()+"/version.xml", f.getPath()+"/version.xml");
+                downloadFile("http://pethotelfinder.000webhostapp.com/"+g.getIdGuarderia()+"/"+"version.xml", new File(f, "version.xml"));
                 getImages(f, pgRemot);
 
             }
         }
-        c.disconect(ftp);
     }
 
     private void setImages() {
@@ -151,7 +198,6 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
 
                 } else {
                     i = new Intent(ActivityDetallGuarderia.this, ActivityLogin.class);
-
                 }
                 startActivity(i);
             }

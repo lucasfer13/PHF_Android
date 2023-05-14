@@ -2,11 +2,16 @@ package com.example.phf_android.Clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.example.phf_android.SQL.Conexion;
 import com.example.phf_android.SQL.Constants;
+import com.example.phf_android.SQL.ControlUsuario;
 
+import java.sql.Array;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Mascota implements Parcelable {
 
@@ -102,6 +107,10 @@ public class Mascota implements Parcelable {
         this.ta = ta;
     }
 
+    public void fillTipusAnimal() {
+        this.ta = TipusAnimals.getTipusAnimalMascota(this.id);
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -130,6 +139,31 @@ public class Mascota implements Parcelable {
 
     public void addMascota(int idUsuari) {
         Conexion.update(String.format(Constants.INSERT_MASCOTA, ta.getId(), idUsuari, nom, cartilla, pes, edat));
+    }
+
+    private static void fillArray(ResultSet rs, ArrayList<Mascota> mascotes) {
+        try {
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String urlFoto = rs.getString(2);
+                String nom = rs.getString(3);
+                String cartilla = rs.getString(4);
+                String tipus = rs.getString(5);
+                double pes = rs.getDouble(6);
+                int edat = rs.getInt(7);
+
+                mascotes.add(new Mascota(id, urlFoto,nom,tipus,edat,pes,cartilla));
+            }
+        } catch (Exception e) {
+            Log.d("MASCOTA", e.getMessage());
+        }
+    }
+
+    public static ArrayList<Mascota> getMascotesUsuari() {
+        ArrayList<Mascota> mascotas = new ArrayList<>();
+        ResultSet rs = Conexion.query(String.format(Constants.MOSTRAR_ANIMALS_ADAPTER, ControlUsuario.usuari.getId()));
+        fillArray(rs, mascotas);
+        return mascotas;
     }
 
     private Mascota(Parcel in) {

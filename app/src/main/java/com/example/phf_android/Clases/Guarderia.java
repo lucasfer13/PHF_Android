@@ -10,7 +10,11 @@ import com.example.phf_android.SQL.Conexion;
 import com.example.phf_android.SQL.Constants;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Struct;
 import java.util.ArrayList;
+
+import javax.xml.transform.Result;
 
 public class Guarderia implements Parcelable {
     private int idGuarderia;
@@ -68,6 +72,14 @@ public class Guarderia implements Parcelable {
             return new Guarderia[size];
         }
     };
+
+    public ArrayList<TipusHabitacio> getTipusHabitacios() {
+        return tipusHabitacios;
+    }
+
+    public void setTipusHabitacios(ArrayList<TipusHabitacio> tipusHabitacios) {
+        this.tipusHabitacios = tipusHabitacios;
+    }
 
     public String getFoto() {
         return foto;
@@ -176,6 +188,38 @@ public class Guarderia implements Parcelable {
         rs = Conexion.query(Constants.SORTED_GUARDERIES);
         putGuarderies(rs, guarderias);
         return guarderias;
+    }
+
+    public boolean estaDisponible(String dataInici, String dataFi, TipusHabitacio th) {
+        ResultSet rs = Conexion.query(String.format(Constants.HABITACIONS_OCUPADES, dataInici, dataInici, dataFi, dataFi, th.getId()));
+        int ocupades = 0, totals = 0;
+
+        try {
+            rs.next();
+            ocupades = rs.getInt(1);
+            Conexion.desconectar();
+            rs = Conexion.query(String.format(Constants.HABITACIONS_TOTALS, th.getId()));
+            rs.next();
+            totals = rs.getInt(1);
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            Log.d("GUARDERIA", e.getMessage());
+        }
+        return ocupades==totals?false:true;
+    }
+
+    // Retorna true si la guarderia te vacances en les dates especificades, false si no
+    public boolean teVacances(String dataInici, String dataFi) {
+        int resultat = 0;
+        ResultSet rs = Conexion.query(String.format(Constants.VACANCES_GUARDERIA, dataInici, dataInici, dataFi, dataFi, this.idGuarderia));
+        try {
+            rs.next();
+            resultat = rs.getInt(1);
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            Log.d("GUARDERIA", e.getMessage());
+        }
+        return resultat == 0?false:true;
     }
 
     @Override

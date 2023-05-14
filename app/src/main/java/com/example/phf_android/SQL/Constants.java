@@ -13,8 +13,12 @@ public class Constants {
 
     public static final String CERCAR_TIPUS_ANIMALS_TIPUS_HABITACIONS = "SELECT ta.idTipusAnimal, ta.nom FROM tipusanimal ta" +
             " JOIN animal_tipushabitacio ath ON ath.idTipusAnimal = ta.idTipusAnimal" +
-            " JOIN tipushabitacio th ON th.idTipusHabitacio = ta.idTipusHabitacio" +
+            " JOIN tipushabitacio th ON th.idTipusHabitacio = ath.idTipusHabitacio" +
             " WHERE th.idTipusHabitacio = %d";
+
+    public static final String CERCAR_TIPUS_ANIMALS_MASCOTA = "SELECT * FROM tipusanimal ta" +
+            " JOIN animal a ON a.idTipusAnimal = ta.idTipusAnimal" +
+            " WHERE a.idAnimal = %d";
 
     public static final String INSERT_MASCOTA = "INSERT INTO animal (idTipusAnimal, idUsuari, nom, cartilla, pes, edat) VALUES (%d, %d,'%s', '%s', %e, %d)";
     public static final String CERCAR_TIPUS_ANIMALS = "SELECT * FROM tipusanimal";
@@ -30,7 +34,7 @@ public class Constants {
             " JOIN ciutat c ON c.idCiutat = cp.idCiutat" +
             " WHERE g.nom LIKE '%%%s%%' AND g.actiu = 1 AND NOT g.idGuarderia = ANY (" +
             "SELECT v.idGuarderia FROM vacances v" +
-            " WHERE v.dataFi >= '%s' AND v.dataInici <= '%s'" +
+            " WHERE (v.dataFi >= '%s' AND v.dataInici <= '%s') OR (v.dataFi >= '%s' AND v.dataInici <= '%s')" +
             ")";
     public static final String CERCAR_SERVEIS_BY_IDGUARDERIA = "SELECT * FROM serveis s" +
             " JOIN serveisguarderia sg ON sg.idServei = s.idServei" +
@@ -47,6 +51,33 @@ public class Constants {
             " JOIN usuaris u ON r.idUsuari = u.idUsuari" +
             " WHERE g.idGuarderia = %d";
 
+    public static final String HABITACIONS_OCUPADES = "SELECT COUNT(*) FROM habitacions h" +
+            " JOIN detallreserva dr ON dr.idHabitacio = h.idHabitacio" +
+            " JOIN reserves r ON r.idReserva = dr.idReserva" +
+            " JOIN guarderia g ON r.idGuarderia = g.idGuarderia" +
+            " JOIN tipushabitacio th ON th.idGuarderia = g.idGuarderia" +
+            " WHERE ((dr.dataInici >= '%s' AND dr.dataFi <= '%s') OR (dr.dataInici >= '%s' AND dr.dataFi <= '%s')) AND th.idTipusHabitacio = %d";
+
+    public static final String HABITACIONS_TOTALS = "SELECT COUNT(*) FROM habitacions h" +
+            " JOIN guarderia g ON h.idGuarderia = g.idGuarderia" +
+            " JOIN tipushabitacio th ON th.idGuarderia = g.idGuarderia" +
+            " WHERE th.idTipusHabitacio = %d";
+
+    public static final String VACANCES_GUARDERIA = "SELECT COUNT(*) FROM guarderia g" +
+            " JOIN vacances v ON v.idGuarderia = g.idGuarderia" +
+            " WHERE ((v.dataInici <= '%s' AND v.dataFi >= '%s') OR (v.dataInici <= '%s' AND v.dataFi >= '%s')) AND g.idGuarderia = %d";
+
     public static final String AFEGIR_USUARI_REGISTRE = "INSERT INTO `usuaris` (`DocumentIdentitat`, `nom`, `cognom1`, `cognom2`, `nomUsuari`, `contrasenya`, `telefon`, `correu`, `actiu` , `tipusUsuari`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 1, 3);";
     public static final String FER_LOGIN = "SELECT * FROM `usuaris` WHERE nomUsuari='%s';";
+
+    public static final String INSERT_RESERVA = "INSERT INTO reserves (idUsuari, idGuarderia, preuTotal, acceptada) VALUES (%d, %d, %f, 1)";
+
+    public static final String INSERT_DETALL_RESERVA = "INSERT  INTO detallreserva (idReserva, idAnimal, idHabitacio, preu, dataInici, dataFi) VALUES (%d, %d, %d, %f, '%s', '%s')";
+
+    public static final String GET_HABITACIO_DISPONIBLE = "SELECT h.idHabitacio FROM habitacions h WHERE h.idTipusHabitacio = %d AND h.idHabitacio NOT IN (SELECT h.idHabitacio FROM habitacions h" +
+            " JOIN detallreserva dr ON dr.idHabitacio = h.idHabitacio" +
+            " JOIN reserves r ON r.idReserva = dr.idReserva" +
+            " JOIN guarderia g ON r.idGuarderia = g.idGuarderia" +
+            " JOIN tipushabitacio th ON th.idGuarderia = g.idGuarderia" +
+            " WHERE ((dr.dataInici >= '%s' AND dr.dataFi <= '%s') OR (dr.dataInici >= '%s' AND dr.dataFi <= '%s')) AND th.idTipusHabitacio = %d) LIMIT 1";
 }

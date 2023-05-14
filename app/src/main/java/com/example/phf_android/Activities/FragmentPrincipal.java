@@ -45,7 +45,7 @@ public class FragmentPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                if (ControlUsuario.usuari != null) intent = new Intent(getActivity(), ActivityLogin.class);
+                if (ControlUsuario.usuari != null) intent = new Intent(getActivity(), ActivityConfiguracio.class);
                 else intent = new Intent(v.getContext(), ActivityLogin.class);
                 startActivity(intent);
             }
