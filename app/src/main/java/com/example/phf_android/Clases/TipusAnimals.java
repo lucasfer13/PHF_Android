@@ -7,6 +7,7 @@ import com.example.phf_android.SQL.Constants;
 
 import java.sql.Array;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TipusAnimals {
@@ -42,10 +43,23 @@ public class TipusAnimals {
         return ta;
     }
 
+    public static TipusAnimals getTipusAnimalMascota(int idMascota) {
+        TipusAnimals ta = null;
+        ResultSet rs = Conexion.query(String.format(Constants.CERCAR_TIPUS_ANIMALS_MASCOTA, idMascota));
+        try {
+            rs.next();
+            ta = new TipusAnimals(rs.getInt(1), rs.getString(2));
+        } catch (SQLException e) {
+            Log.d("TIPUS_ANIMALS", e.getMessage());
+        }
+        return ta;
+    }
+
     public static ArrayList<TipusAnimals> getTipusAnimalsTipusHabitacio(int idTipusHabitacio) {
         ArrayList<TipusAnimals> ta = new ArrayList<>();
         ResultSet rs = Conexion.query(String.format(Constants.CERCAR_TIPUS_ANIMALS_TIPUS_HABITACIONS, idTipusHabitacio));
         fillFromResultSet(rs, ta);
+        Conexion.desconectar();
         return ta;
     }
 

@@ -21,11 +21,11 @@ public class TipusHabitacio {
         this.id = id;
         this.preu = preu;
         this.nom = nom;
-        getTipusAnimals();
+        ta = TipusAnimals.getTipusAnimalsTipusHabitacio(this.id);
     }
 
-    private void getTipusAnimals() {
-        ta = TipusAnimals.getTipusAnimalsTipusHabitacio(this.id);
+    public ArrayList<TipusAnimals> getTipusAnimals() {
+        return ta;
     }
 
     public int getId() {

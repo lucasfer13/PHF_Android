@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.BlockingDeque;
 
 public class Conexion {
     private static final String CONTROLADOR = "org.gjt.mm.mysql.Driver";
@@ -30,7 +31,7 @@ public class Conexion {
         Connection conexion = null;
         try {
             Class.forName(CONTROLADOR);
-            conexion = DriverManager.getConnection(URL_LOCAL,USUARIO,PASSW);
+            conexion = DriverManager.getConnection(URL,USUARIO,PASSW);
             Log.d("Connexion","Conexion ok");
 
         }catch(Exception e) {
@@ -67,6 +68,22 @@ public class Conexion {
         return rs;
     }
 
+    public static int insertID(String insert) {
+        int id = -1;
+        cn = conexio.conectar();
+        try {
+            stm = cn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stm.executeUpdate(insert, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stm.getGeneratedKeys();
+            rs.next();
+            id = rs.getInt(1);
+            desconectar();
+        } catch (Exception e) {
+            Log.d("INSERT", e.getMessage());
+        }
+        return id;
+    }
+
     public static void update(String constant) {
         try {
             cn = conexio.conectar();
@@ -75,6 +92,5 @@ public class Conexion {
         } catch (Exception e) {
             Log.d("COMANDA", e.getMessage());
         }
-
     }
 }

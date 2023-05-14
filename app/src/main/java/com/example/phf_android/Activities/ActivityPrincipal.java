@@ -49,7 +49,7 @@ public class ActivityPrincipal extends AppCompatActivity {
         initDatePicker();
         rv = findViewById(R.id.rcvActivityPrincipalGuarderies);
         guarderies = Guarderia.getBestGuarderies();
-        list = new ListAdapterBusquedaGuarderia(guarderies, this);
+        list = new ListAdapterBusquedaGuarderia(guarderies, ActivityPrincipal.this);
         rv.setLayoutManager(new LinearLayoutManager(ActivityPrincipal.this));
         rv.setHasFixedSize(true);
         rv.setAdapter(list);
