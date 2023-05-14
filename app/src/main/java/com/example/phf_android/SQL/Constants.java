@@ -80,4 +80,6 @@ public class Constants {
             " JOIN guarderia g ON r.idGuarderia = g.idGuarderia" +
             " JOIN tipushabitacio th ON th.idGuarderia = g.idGuarderia" +
             " WHERE ((dr.dataInici >= '%s' AND dr.dataFi <= '%s') OR (dr.dataInici >= '%s' AND dr.dataFi <= '%s')) AND th.idTipusHabitacio = %d) LIMIT 1";
+    public static final String MODIFICAR_USUARI = "UPDATE usuaris SET DocumentIdentitat = '%s', nom = '%s', cognom1 = '%s', cognom2 = '%s', nomUsuari = '%s', correu = '%s' WHERE IdUsuari = %d;";
+    public static final String MODIFICAR_CONTRASENYA = "UPDATE usuaris SET `contrasenya` = '%s' WHERE IdUsuari = %d;";
 }
