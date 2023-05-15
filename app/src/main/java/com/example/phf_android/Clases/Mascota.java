@@ -43,6 +43,29 @@ public class Mascota implements Parcelable {
         this.ta = ta;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(foto);
+        dest.writeString(nom);
+        dest.writeString(tipus);
+        dest.writeInt(edat);
+        dest.writeDouble(pes);
+        dest.writeString(cartilla);
+    }
+
+    public static final Creator<Mascota> CREATOR = new Creator<Mascota>() {
+        @Override
+        public Mascota createFromParcel(Parcel in) {
+            return new Mascota(in);
+        }
+
+        @Override
+        public Mascota[] newArray(int size) {
+            return new Mascota[size];
+        }
+    };
+
     public int getId() {
         return id;
     }
@@ -116,27 +139,6 @@ public class Mascota implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(foto);
-        dest.writeString(nom);
-        dest.writeString(tipus);
-        dest.writeInt(edat);
-        dest.writeDouble(pes);
-        dest.writeString(cartilla);
-    }
-
-    public static final Parcelable.Creator<Mascota> CREATOR
-            = new Parcelable.Creator<Mascota>() {
-        public Mascota createFromParcel(Parcel in) {
-            return new Mascota(in);
-        }
-
-        public Mascota[] newArray(int size) {
-            return new Mascota[size];
-        }
-    };
-
     public void addMascota(int idUsuari) {
         Conexion.update(String.format(Constants.INSERT_MASCOTA, ta.getId(), idUsuari, nom, cartilla, pes, edat));
     }
@@ -167,6 +169,7 @@ public class Mascota implements Parcelable {
     }
 
     private Mascota(Parcel in) {
+        id = in.readInt();
         foto = in.readString();
         nom = in.readString();
         tipus = in.readString();

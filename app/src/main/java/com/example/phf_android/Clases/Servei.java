@@ -48,7 +48,7 @@ public class Servei {
         ArrayList<Servei> serveis = new ArrayList<>();
         ResultSet rs = Conexion.query(String.format(Constants.CERCAR_SERVEIS_BY_IDGUARDERIA, idGuarderia));
         putServeis(rs, serveis);
-        return null;
+        return serveis;
     }
 
     public static ArrayList<Servei> getServeis() {
