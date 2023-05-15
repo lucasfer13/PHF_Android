@@ -74,17 +74,12 @@ public class ReservesAdapter extends RecyclerView.Adapter<ReservesAdapter.ViewHo
         }
         public void bind(Reserva reserva){
             Log.d("hola",reserva.toString());
-            SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-            Date date1 = reserva.getDataInici();
-            Date date2 = reserva.getDataFi();
-            String dataInici1 = sdf.format(date1);
-            String dataFi1 = sdf.format(date2);
-            nom.setText(String.valueOf(reserva.getIdGuarderia()));
-            preu.setText(String.valueOf(reserva.getPreuTota())+"€");
+            nom.setText(String.valueOf(reserva.getNomGuarderia()));
+            preu.setText(String.valueOf(reserva.getPreuTotal())+" €");
             int foto = getImage(String.valueOf(R.drawable.logophf));
             Glide.with(context).load(foto).into(imatge);
-            dataInici.setText(dataInici1);
-            dataFi.setText(dataFi1);
+            dataInici.setText(reserva.getDataInici());
+            dataFi.setText(reserva.getDataFi());
             // Assignació dels valors del dataset[position] als atributs de la classe
         }
         public Integer getImage(String imatge) {

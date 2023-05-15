@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.phf_android.Adapters.AdapterRatings;
+import com.example.phf_android.Adapters.AdapterServeis;
 import com.example.phf_android.Adapters.ViewPagerAdapter;
 import com.example.phf_android.Clases.Picture;
 import com.example.phf_android.Clases.PicturesGuarderia;
@@ -23,9 +24,6 @@ import com.example.phf_android.FTPConexio.XMLReader;
 import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.R;
 import com.example.phf_android.SQL.ControlUsuario;
-
-
-import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,6 +42,7 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
     Bitmap[] images;
     RatingBar rating;
     RecyclerView rc;
+    RecyclerView serveis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,13 @@ public class ActivityDetallGuarderia extends AppCompatActivity {
         rating.setRating(Float.parseFloat(g.getValoracio()));
         rating.setEnabled(false);
         g.getRelations();
+
         rc = findViewById(R.id.rcvDetallGuarderiaValoracions);
+        serveis = findViewById(R.id.rcvDetallGuarderiaServeis);
+        AdapterServeis adapterServeis = new AdapterServeis(g.getServeis(), this);
+        serveis.setHasFixedSize(true);
+        serveis.setLayoutManager(new LinearLayoutManager(this));
+        serveis.setAdapter(adapterServeis);
         AdapterRatings adapter = new AdapterRatings(g.getRatings(), this);
         rc.setHasFixedSize(true);
         rc.setLayoutManager(new LinearLayoutManager(this));

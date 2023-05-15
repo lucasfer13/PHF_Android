@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.phf_android.Clases.Usuari;
 import com.example.phf_android.R;
 import com.example.phf_android.SQL.Conexion;
-import com.example.phf_android.SQL.controlUsuario;
+import com.example.phf_android.SQL.ControlUsuario;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -34,7 +34,7 @@ public class ActivityCanviarContrasenya extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canviar_contrasenya);
         guardar=findViewById(R.id.btnCanviarContrasenyaGuardar);
-        temp = controlUsuario.usuari;
+        temp = ControlUsuario.usuari;
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,15 +62,10 @@ public class ActivityCanviarContrasenya extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (contraAnt.equals(temp.getContrasenya())){
-                        try {
-                            Conexion.update(String.format(MODIFICAR_CONTRASENYA , contraNew, temp.getId()));
-                            Intent intent = new Intent (ActivityCanviarContrasenya.this, ActivityConfiguracioPerfil.class);
-                            startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "S'ha canviat la contrasenya correctament.", Toast.LENGTH_LONG).show();
-                        } catch (SQLException e) {
-                            Toast.makeText(getApplicationContext(), "No s'ha pogut canviar la contrasenya.", Toast.LENGTH_LONG).show();
-                            e.printStackTrace();
-                        }
+                        Conexion.update(String.format(MODIFICAR_CONTRASENYA , contraNew, temp.getId()));
+                        Intent intent = new Intent (ActivityCanviarContrasenya.this, ActivityConfiguracioPerfil.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "S'ha canviat la contrasenya correctament.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "La contrasenya es incorrecta.", Toast.LENGTH_LONG).show();
                     }

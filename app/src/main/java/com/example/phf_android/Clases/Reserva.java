@@ -1,92 +1,84 @@
 package com.example.phf_android.Clases;
 
+import android.util.Log;
+
+import com.example.phf_android.SQL.Conexion;
+import com.example.phf_android.SQL.Constants;
+import com.example.phf_android.SQL.ControlUsuario;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class Reserva {
-    int idReserva;
-    int idGuarderia;
-    int idUsuari;
-    Date dataInici;
-    Date dataFi;
-    double preuTota;
-    boolean acceptada;
+import javax.xml.transform.Result;
 
-    public Reserva(int idReserva, int idGuarderia, int idUsuari, Date dataInici, Date dataFi, double preuTota, boolean acceptada) {
-        this.idReserva = idReserva;
-        this.idGuarderia = idGuarderia;
-        this.idUsuari = idUsuari;
+public class Reserva {
+    private String nomGuarderia;
+    private double preuTotal;
+    private String dataInici;
+    private String dataFi;
+
+    public Reserva(String nomGuarderia, double preuTotal, String dataInici, String dataFi) {
+        this.nomGuarderia = nomGuarderia;
+        this.preuTotal = preuTotal;
         this.dataInici = dataInici;
         this.dataFi = dataFi;
-        this.preuTota = preuTota;
-        this.acceptada = acceptada;
     }
 
-    public int getIdReserva() {
-        return idReserva;
+    public String getNomGuarderia() {
+        return nomGuarderia;
     }
 
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
+    public void setNomGuarderia(String nomGuarderia) {
+        this.nomGuarderia = nomGuarderia;
     }
 
-    public int getIdGuarderia() {
-        return idGuarderia;
+    public double getPreuTotal() {
+        return preuTotal;
     }
 
-    public void setIdGuarderia(int idGuarderia) {
-        this.idGuarderia = idGuarderia;
+    public void setPreuTotal(double preuTotal) {
+        this.preuTotal = preuTotal;
     }
 
-    public int getIdUsuari() {
-        return idUsuari;
-    }
-
-    public void setIdUsuari(int idUsuari) {
-        this.idUsuari = idUsuari;
-    }
-
-    public Date getDataInici() {
+    public String getDataInici() {
         return dataInici;
     }
 
-    public void setDataInici(Date dataInici) {
+    public void setDataInici(String dataInici) {
         this.dataInici = dataInici;
     }
 
-    public Date getDataFi() {
+    public String getDataFi() {
         return dataFi;
     }
 
-    public void setDataFi(Date dataFi) {
+    public void setDataFi(String dataFi) {
         this.dataFi = dataFi;
     }
 
-    public double getPreuTota() {
-        return preuTota;
+    public static void fillArray(ResultSet rs, ArrayList<Reserva> r) {
+        try {
+            while(rs.next()) {
+                r.add(new Reserva(rs.getString(1), rs.getDouble(2), rs.getDate(3).toString(), rs.getDate(4).toString()));
+            }
+        } catch (Exception e) {
+            Log.d("RESERVA", e.getMessage());
+        }
+        Conexion.desconectar();
     }
 
-    public void setPreuTota(double preuTota) {
-        this.preuTota = preuTota;
+    public static ArrayList<Reserva> getReservasUsuario() {
+        ArrayList<Reserva> reservas = new ArrayList<>();
+        ResultSet rs = Conexion.query(String.format(Constants.GET_RESERVES_USUARI, ControlUsuario.usuari.getId()));
+        fillArray(rs, reservas);
+        return reservas;
     }
 
-    public boolean isAcceptada() {
-        return acceptada;
-    }
-
-    public void setAcceptada(boolean acceptada) {
-        this.acceptada = acceptada;
-    }
-
-    @Override
-    public String toString() {
-        return "Reserva{" +
-                "idReserva=" + idReserva +
-                ", idGuarderia=" + idGuarderia +
-                ", idUsuari=" + idUsuari +
-                ", dataInici=" + dataInici +
-                ", dataFi=" + dataFi +
-                ", preuTota=" + preuTota +
-                ", acceptada=" + acceptada +
-                '}';
+    public static ArrayList<Reserva> getReservasAnimal(int idAnimal) {
+        ArrayList<Reserva> reservas = new ArrayList<>();
+        ResultSet rs = Conexion.query(String.format(Constants.GET_RESERVES_ANIMAL, idAnimal));
+        fillArray(rs, reservas);
+        return reservas;
     }
 }

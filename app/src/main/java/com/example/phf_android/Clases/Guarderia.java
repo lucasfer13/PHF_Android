@@ -177,7 +177,7 @@ public class Guarderia implements Parcelable {
 
     public static ArrayList<Guarderia> searchGuarderies(String nomBuscar, String dataFi, String dataInici) {
         ArrayList<Guarderia> guarderias = new ArrayList<>();
-        ResultSet rs = Conexion.query(String.format(Constants.CERCAR_GUARDERIES_ENABLED, nomBuscar, dataFi, dataInici));
+        ResultSet rs = Conexion.query(String.format(Constants.CERCAR_GUARDERIES_ENABLED, nomBuscar, dataFi, dataInici, dataFi, dataInici));
         putGuarderies(rs, guarderias);
         return  guarderias;
     }

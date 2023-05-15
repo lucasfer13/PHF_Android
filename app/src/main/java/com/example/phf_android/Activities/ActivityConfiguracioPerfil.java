@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.phf_android.Clases.Usuari;
 import com.example.phf_android.R;
 import com.example.phf_android.SQL.Conexion;
-import com.example.phf_android.SQL.controlUsuario;
+import com.example.phf_android.SQL.ControlUsuario;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -44,7 +44,7 @@ public class ActivityConfiguracioPerfil extends AppCompatActivity {
         Dni=findViewById(R.id.txtConfiguracioPerfilDni);
         Correu=findViewById(R.id.txtConfiguracioPerfilCorreu);
 
-        Usuari temp = controlUsuario.usuari;
+        Usuari temp = ControlUsuario.usuari;
 
         NomUsuari.setText(temp.getNomUsuari());
         nom.setText(temp.getNom());
@@ -57,22 +57,18 @@ public class ActivityConfiguracioPerfil extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    temp.setNom(String.valueOf(nom.getText()));
-                    temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
-                    temp.setCognoms(String.valueOf(Cognoms.getText()));
-                    temp.setDni(String.valueOf(Dni.getText()));
-                    temp.setCorreu(String.valueOf(Correu.getText()));
-                    String[] AllCognoms = temp.getCognoms().split(" ");
-                    String Cognom1 = AllCognoms[0];
-                    String Cognom2 = "";
-                    if (AllCognoms.length >= 2) {
-                        Cognom2 = AllCognoms[1];
-                    }
-                    Conexion.update(String.format(MODIFICAR_USUARI, temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), temp.getCorreu(), temp.getId()));
-                }catch(SQLException e) {
-                    e.printStackTrace();
+                temp.setNom(String.valueOf(nom.getText()));
+                temp.setNomUsuari(String.valueOf(NomUsuari.getText()));
+                temp.setCognoms(String.valueOf(Cognoms.getText()));
+                temp.setDni(String.valueOf(Dni.getText()));
+                temp.setCorreu(String.valueOf(Correu.getText()));
+                String[] AllCognoms = temp.getCognoms().split(" ");
+                String Cognom1 = AllCognoms[0];
+                String Cognom2 = "";
+                if (AllCognoms.length >= 2) {
+                    Cognom2 = AllCognoms[1];
                 }
+                Conexion.update(String.format(MODIFICAR_USUARI, temp.getDni(), temp.getNom(), Cognom1, Cognom2, temp.getNomUsuari(), temp.getCorreu(), temp.getId()));
                 Toast.makeText(getApplicationContext(), "S'ha modificat el registre", Toast.LENGTH_SHORT).show();
                 //Intent intent = new Intent (ActivityConfiguracioPerfil.this, ActivityConfiguracio.class);
                 //startActivity(intent);

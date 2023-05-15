@@ -51,6 +51,7 @@ public class AdapterRatings extends RecyclerView.Adapter<AdapterRatings.ViewHold
         }
         public void bind(Rating rating){
             user.setText(rating.getUser());
+            rb.setEnabled(false);
             rb.setRating(rating.getRating());
             // Assignació dels valors del dataset[position] als atributs de la classe
         }

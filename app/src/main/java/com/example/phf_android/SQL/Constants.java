@@ -34,7 +34,7 @@ public class Constants {
             " JOIN ciutat c ON c.idCiutat = cp.idCiutat" +
             " WHERE g.nom LIKE '%%%s%%' AND g.actiu = 1 AND NOT g.idGuarderia = ANY (" +
             "SELECT v.idGuarderia FROM vacances v" +
-            " WHERE (v.dataFi >= '%s' AND v.dataInici <= '%s') OR (v.dataFi >= '%s' AND v.dataInici <= '%s')" +
+            " WHERE (v.dataFi < '%s' AND v.dataFi < '%s') OR (v.dataInici > '%s' AND v.dataInici > '%s')" +
             ")";
     public static final String CERCAR_SERVEIS_BY_IDGUARDERIA = "SELECT * FROM serveis s" +
             " JOIN serveisguarderia sg ON sg.idServei = s.idServei" +
@@ -82,4 +82,14 @@ public class Constants {
             " WHERE ((dr.dataInici >= '%s' AND dr.dataFi <= '%s') OR (dr.dataInici >= '%s' AND dr.dataFi <= '%s')) AND th.idTipusHabitacio = %d) LIMIT 1";
     public static final String MODIFICAR_USUARI = "UPDATE usuaris SET DocumentIdentitat = '%s', nom = '%s', cognom1 = '%s', cognom2 = '%s', nomUsuari = '%s', correu = '%s' WHERE IdUsuari = %d;";
     public static final String MODIFICAR_CONTRASENYA = "UPDATE usuaris SET `contrasenya` = '%s' WHERE IdUsuari = %d;";
+
+    public static final String GET_RESERVES_USUARI = "SELECT g.nom, r.preuTotal, dr.dataInici, dr.dataFi FROM reserves r" +
+            " JOIN detallreserva dr ON dr.idReserva = r.idReserva" +
+            " JOIN guarderia g ON g.idGuarderia = r.idGuarderia" +
+            " WHERE r.idUsuari = %d";
+
+    public static final String GET_RESERVES_ANIMAL = "SELECT g.nom, r.preuTotal, dr.dataInici, dr.dataFi FROM reserves r" +
+            " JOIN detallreserva dr ON dr.idReserva = r.idReserva" +
+            " JOIN guarderia g ON g.idGuarderia = r.idGuarderia" +
+            " WHERE dr.idAnimal = %d";
 }

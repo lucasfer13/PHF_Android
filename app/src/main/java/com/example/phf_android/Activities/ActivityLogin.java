@@ -38,7 +38,7 @@ public class ActivityLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (v.getContext(), ActivityRegister.class);
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             }
         });
 
@@ -78,7 +78,7 @@ public class ActivityLogin extends AppCompatActivity {
 
                 if(contra.equals(temp.getContrasenya())&&temp.getActiu()==1){
                     ControlUsuario.usuari = temp;
-                    Intent intent = new Intent (v.getContext(), ActivityConfiguracio.class);
+                    Intent intent = new Intent (v.getContext(), ActivityPrincipal.class);
                     startActivity(intent);
                 } else {
 

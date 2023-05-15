@@ -11,15 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.phf_android.Adapters.ReservesAdapter;
 import com.example.phf_android.Clases.Guarderia;
 import com.example.phf_android.Adapters.ListAdapterBusquedaGuarderia;
 import com.example.phf_android.Clases.Mascota;
+import com.example.phf_android.Clases.Reserva;
 import com.example.phf_android.R;
 
 import java.util.ArrayList;
 
 public class ActivityDetallMascota extends AppCompatActivity {
     ArrayList<Guarderia> guarderies;
+    Mascota mascotaSeleccionada;
     Context context=this;
 
     @Override
@@ -28,7 +31,7 @@ public class ActivityDetallMascota extends AppCompatActivity {
         setContentView(R.layout.activity_detall_mascota);
         guarderies = new ArrayList<>();
         Intent intent = getIntent();
-        Mascota mascotaSeleccionada = intent.getParcelableExtra("mascotaSeleccionada");
+        mascotaSeleccionada = intent.getParcelableExtra("mascotaSeleccionada");
         TextView txtDetallMascotaNom = findViewById(R.id.txtDetallMascotaNom);
         TextView txtDetallMascotaPes = findViewById(R.id.txtDetallMascotaPes);
         TextView txtDetallMascotaEdat = findViewById(R.id.txtDetallMascotaEdat);
@@ -52,11 +55,11 @@ public class ActivityDetallMascota extends AppCompatActivity {
     }
 
     public void init(){
-        ListAdapterBusquedaGuarderia listAdapter = new ListAdapterBusquedaGuarderia(guarderies,this);
+        ReservesAdapter adapter = new ReservesAdapter(Reserva.getReservasAnimal(mascotaSeleccionada.getId()), this);
         RecyclerView recyclerView = findViewById(R.id.lisDetallMascotaHistorial);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapter);
+        recyclerView.setAdapter(adapter);
     }
 
 }
